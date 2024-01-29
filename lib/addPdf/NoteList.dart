@@ -103,7 +103,9 @@ class _NoteListState extends State<NoteList> {
                                     child: IconButton(
                                         onPressed: () {
                                           setState(() {
-                                             Data[index].reference.delete();
+                                            deleteFileByUrl(Data[index]['Url']);
+
+                                            Data[index].reference.delete();
                                           });
                                         },
                                         icon: const Icon(Icons.delete))),
@@ -157,5 +159,14 @@ class AppText extends StatelessWidget {
       overflow: TextOverflow.ellipsis,
       maxLines: 1,
     );
+  }
+}
+
+Future deleteFileByUrl(String url) async {
+  try {
+    await FirebaseStorage.instance.refFromURL(url).delete();
+    print("storge delete Success fully");
+  } catch (e) {
+    print(e);
   }
 }

@@ -33,10 +33,10 @@ class _AddNotesState extends State<AddNotes> {
     "Carpenter",
     "Draughtsman (Civil/Mechanical)",
     "Surveyor",
-    //"  Refrigeration and Air Conditioning Mechanic",
+    //"Refrigeration and Air Conditioning Mechanic",
     "Mechanic Diesel Engine",
     "Mechanic Radio and Television",
-    // "Stenographer and Secretarial Assistant (English/Hindi)",
+    //"Stenographer and Secretarial Assistant (English/Hindi)",
     "Cutting and Sewing",
     "Hair and Skin Care",
     "Food Production (General)",
@@ -65,7 +65,6 @@ class _AddNotesState extends State<AddNotes> {
   }
 
   Future<void> uploadFile() async {
-
     if (selectedSclass == null) {
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
           behavior: SnackBarBehavior.floating,
@@ -75,8 +74,7 @@ class _AddNotesState extends State<AddNotes> {
               weight: FontWeight.w400,
               size: 14,
               textcolor: white)));
-    }
-    if (selectedSyear == null) {
+    } else if (selectedSyear == null) {
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
           behavior: SnackBarBehavior.floating,
           backgroundColor: Colors.red,
@@ -85,8 +83,7 @@ class _AddNotesState extends State<AddNotes> {
               weight: FontWeight.w400,
               size: 14,
               textcolor: white)));
-    }
-    if (selectedSsub == null) {
+    } else if (selectedSsub == null) {
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
           behavior: SnackBarBehavior.floating,
           backgroundColor: Colors.red,
@@ -95,8 +92,7 @@ class _AddNotesState extends State<AddNotes> {
               weight: FontWeight.w400,
               size: 14,
               textcolor: white)));
-    }
-    if (selectedFile == null) {
+    } else if (selectedFile == null) {
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
           behavior: SnackBarBehavior.floating,
           backgroundColor: Colors.red,
@@ -105,32 +101,32 @@ class _AddNotesState extends State<AddNotes> {
               weight: FontWeight.w400,
               size: 14,
               textcolor: white)));
-    }
-
-    try {
-
-      Reference storageReference =
-          FirebaseStorage.instance.ref().child('Notes/${DateTime.now()}.pdf');
-      UploadTask uploadTask = storageReference.putFile(selectedFile!);
-
-      await uploadTask.whenComplete(() => print('File Uploaded'));
-
-      // Get the download URL
-      String downloadURL = await storageReference.getDownloadURL();
+    } else {
       setState(() {
-        uploadUrl = downloadURL;
+        isLoading = true;
       });
-      await FirebaseFirestore.instance.collection('Notes').add({
-        'Trade': selectedSclass,
-        'year': selectedSyear,
-        'Subject': selectedSsub,
-        'Url': uploadUrl,
-        'CreateAt': DateTime.now()
-      }).then((value) => Navigator.pop(context));
-      // Now you can use the download URL as needed (e.g., store it in the database)
-      // print('Download URL: $downloadURL');
-    } catch (e) {
-      print('Error uploading file: $e');
+      try {
+        Reference storageReference =
+            FirebaseStorage.instance.ref().child('Notes/${DateTime.now()}.pdf');
+        UploadTask uploadTask = storageReference.putFile(selectedFile!);
+
+        await uploadTask.whenComplete(() => print('File Uploaded'));
+
+        // Get the download URL
+        String downloadURL = await storageReference.getDownloadURL();
+        setState(() {
+          uploadUrl = downloadURL;
+        });
+        await FirebaseFirestore.instance.collection('Notes').add({
+          'Trade': selectedSclass,
+          'year': selectedSyear,
+          'Subject': selectedSsub,
+          'Url': uploadUrl,
+          'CreateAt': DateTime.now()
+        }).then((value) => Navigator.pop(context));
+      } catch (e) {
+        print('Error uploading file: $e');
+      }
     }
   }
 
@@ -153,6 +149,10 @@ class _AddNotesState extends State<AddNotes> {
                 children: [
                   const SizedBox(height: 20),
                   DropdownMenu(
+                    inputDecorationTheme: InputDecorationTheme(
+                        contentPadding: EdgeInsets.symmetric(
+                            vertical: 10.h, horizontal: 10.h),
+                        border: OutlineInputBorder()),
                     hintText: "Select Trade",
                     menuStyle: const MenuStyle(
                         backgroundColor: MaterialStatePropertyAll(white)),
@@ -170,6 +170,10 @@ class _AddNotesState extends State<AddNotes> {
                   ),
                   const SizedBox(height: 20),
                   DropdownMenu(
+                    inputDecorationTheme: InputDecorationTheme(
+                        contentPadding: EdgeInsets.symmetric(
+                            vertical: 10.h, horizontal: 10.h),
+                        border: OutlineInputBorder()),
                     hintText: "Select Year",
                     menuStyle: const MenuStyle(
                         backgroundColor: MaterialStatePropertyAll(white)),
@@ -183,6 +187,10 @@ class _AddNotesState extends State<AddNotes> {
                   ),
                   const SizedBox(height: 20),
                   DropdownMenu(
+                    inputDecorationTheme: InputDecorationTheme(
+                        contentPadding: EdgeInsets.symmetric(
+                            vertical: 10.h, horizontal: 10.h),
+                        border: OutlineInputBorder()),
                     hintText: "Select Suject",
                     menuStyle: const MenuStyle(
                         backgroundColor: MaterialStatePropertyAll(white)),
@@ -281,7 +289,10 @@ class _AddNotesState extends State<AddNotes> {
               ),
             ),
             isLoading == true
-                ? const Center(child: CircularProgressIndicator(color: customBalck,))
+                ? const Center(
+                    child: CircularProgressIndicator(
+                    color: customBalck,
+                  ))
                 : const SizedBox()
           ],
         ),
