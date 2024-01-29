@@ -26,6 +26,7 @@ class MyApp extends StatelessWidget {
       ),
       home: AdminLogin()
     ),
+      designSize: Size(390, 844),
     );
   }
 }
