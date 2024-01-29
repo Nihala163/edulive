@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "523899752046",
+    "project_id": "edulivekmo",
+    "storage_bucket": "edulivekmo.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:523899752046:android:8461458445bbd50383e07f",
+        "android_client_info": {
+          "package_name": "com.hariapp.edulive"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAv_FaqEqfHvW3Ia4nd0g9UuOyD01hoDvw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
