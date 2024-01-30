@@ -2,7 +2,7 @@ import 'package:edulive/profile/Profile.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'UserDashBord.dart';
+import 'home page.dart';
 
 class DashBoard extends StatefulWidget {
   const DashBoard({super.key});
