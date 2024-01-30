@@ -12,14 +12,14 @@ import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 import 'Video player.dart';
 
-class ListVeio extends StatefulWidget {
-  const ListVeio({super.key});
+class VideoList extends StatefulWidget {
+  const VideoList({super.key});
 
   @override
-  State<ListVeio> createState() => _ListVeioState();
+  State<VideoList> createState() => _VideoListState();
 }
 
-class _ListVeioState extends State<ListVeio> {
+class _VideoListState extends State<VideoList> {
   var Links;
   var searchName = '';
   final TextEditingController searchController = TextEditingController();
@@ -27,7 +27,7 @@ class _ListVeioState extends State<ListVeio> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Vedio List'),
+        title: Text('Video List'),
         centerTitle: true,
         actions: [
           IconButton(

@@ -3,7 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../Admin/Video list.dart';
+import '../Quiz/quizViewuser.dart';
 import '../Settings/Settings.dart';
+import '../addPdf/NoteList.dart';
 import '../profile/Profile.dart';
 
 class HomePage extends StatefulWidget {
@@ -106,8 +109,8 @@ class _HomePageState extends State<HomePage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
-                  height: 250.h,
-                  width: 330.w,
+                  height: 290.h,
+                  width: 340.w,
                   decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(10),
@@ -120,8 +123,8 @@ class _HomePageState extends State<HomePage> {
                   child: GridView.count(
                     primary: false,
                     padding: const EdgeInsets.all(20),
-                    crossAxisSpacing: 10,
-                    mainAxisSpacing: 10,
+                    crossAxisSpacing: 5,
+                    mainAxisSpacing: 5,
                     crossAxisCount: 3,
                     children: <Widget>[
                       Container(
@@ -129,28 +132,57 @@ class _HomePageState extends State<HomePage> {
                         color: Colors.white,
                         child: Column(
                           children: [
-                            Container(
-                              height: 50,
-                              width: 70,
-                              decoration: BoxDecoration(
-                                  boxShadow: [
-                                    BoxShadow(
-                                        color: Colors.black.withOpacity(0.3),
-                                        blurRadius: 5.0,
-                                        offset: const Offset(0.0, 3.0)),
-                                  ],
-                                  image: DecorationImage(
-                                      image: AssetImage("assets/quiz.png"),
-                                      fit: BoxFit.fill),
-                                  color: Colors.grey.shade200),
+                            InkWell(onTap: () {
+                              QuizView();
+                            },
+                              child: Container(
+                                height: 50,
+                                width: 70,
+                                decoration: BoxDecoration(
+                                    boxShadow: [
+                                      BoxShadow(
+                                          color: Colors.black.withOpacity(0.3),
+                                          blurRadius: 5.0,
+                                          offset: const Offset(0.0, 3.0)),
+                                    ],
+                                    image: DecorationImage(
+                                        image: AssetImage("assets/quiz.png"),
+                                        fit: BoxFit.fill),
+                                    color: Colors.grey.shade200),
+                              ),
                             ),
-                            Padding(
-                              padding: const EdgeInsets.all(2.0),
-                              child: Text("Quiz",
-                                  style:
-                                      TextStyle(fontWeight: FontWeight.w600)),
-                            ),
+                            Text("Quiz",
+                                style: TextStyle(fontWeight: FontWeight.w600)),
                           ],
+                        ),
+                      ),
+                      InkWell(onTap: () {
+                        NoteList();
+                      },
+                        child: Container(
+                          padding: const EdgeInsets.all(8),
+                          color: Colors.white,
+                          child: Column(
+                            children: [
+                              Container(
+                                height: 50,
+                                width: 70,
+                                decoration: BoxDecoration(
+                                    boxShadow: [
+                                      BoxShadow(
+                                          color: Colors.black.withOpacity(0.3),
+                                          blurRadius: 5.0,
+                                          offset: const Offset(0.0, 3.0)),
+                                    ],
+                                    image: DecorationImage(
+                                        image: AssetImage("assets/std.png"),
+                                        fit: BoxFit.fill),
+                                    color: Colors.grey.shade200),
+                              ),
+                              Text("Material",
+                                  style: TextStyle(fontWeight: FontWeight.w600)),
+                            ],
+                          ),
                         ),
                       ),
                       Container(
@@ -158,56 +190,27 @@ class _HomePageState extends State<HomePage> {
                         color: Colors.white,
                         child: Column(
                           children: [
-                            Container(
-                              height: 50,
-                              width: 70,
-                              decoration: BoxDecoration(
-                                  boxShadow: [
-                                    BoxShadow(
-                                        color: Colors.black.withOpacity(0.3),
-                                        blurRadius: 5.0,
-                                        offset: const Offset(0.0, 3.0)),
-                                  ],
-                                  image: DecorationImage(
-                                      image: AssetImage("assets/std.png"),
-                                      fit: BoxFit.fill),
-                                  color: Colors.grey.shade200),
+                            InkWell(onTap: () {
+                              VideoList();
+                            },
+                              child: Container(
+                                height: 50,
+                                width: 70,
+                                decoration: BoxDecoration(
+                                    boxShadow: [
+                                      BoxShadow(
+                                          color: Colors.black.withOpacity(0.3),
+                                          blurRadius: 5.0,
+                                          offset: const Offset(0.0, 3.0)),
+                                    ],
+                                    image: DecorationImage(
+                                        image: AssetImage("assets/video.png"),
+                                        fit: BoxFit.fill),
+                                    color: Colors.grey.shade200),
+                              ),
                             ),
-                            Padding(
-                              padding: const EdgeInsets.all(2.0),
-                              child: Text("Material",
-                                  style:
-                                      TextStyle(fontWeight: FontWeight.w600)),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Container(
-                        padding: const EdgeInsets.all(8),
-                        color: Colors.white,
-                        child: Column(
-                          children: [
-                            Container(
-                              height: 50,
-                              width: 70,
-                              decoration: BoxDecoration(
-                                  boxShadow: [
-                                    BoxShadow(
-                                        color: Colors.black.withOpacity(0.3),
-                                        blurRadius: 5.0,
-                                        offset: const Offset(0.0, 3.0)),
-                                  ],
-                                  image: DecorationImage(
-                                      image: AssetImage("assets/video.png"),
-                                      fit: BoxFit.fill),
-                                  color: Colors.grey.shade200),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.all(2.0),
-                              child: Text("Video",
-                                  style:
-                                      TextStyle(fontWeight: FontWeight.w600)),
-                            ),
+                            Text("Video",
+                                style: TextStyle(fontWeight: FontWeight.w600)),
                           ],
                         ),
                       ),
@@ -231,12 +234,8 @@ class _HomePageState extends State<HomePage> {
                                       fit: BoxFit.fill),
                                   color: Colors.grey.shade200),
                             ),
-                            Padding(
-                              padding: const EdgeInsets.all(2.0),
-                              child: Text("Todo",
-                                  style:
-                                      TextStyle(fontWeight: FontWeight.w600)),
-                            ),
+                            Text("Todo",
+                                style: TextStyle(fontWeight: FontWeight.w600)),
                           ],
                         ),
                       ),
@@ -260,12 +259,8 @@ class _HomePageState extends State<HomePage> {
                                       fit: BoxFit.fill),
                                   color: Colors.grey.shade200),
                             ),
-                            Padding(
-                              padding: const EdgeInsets.all(2.0),
-                              child: Text("Compleate",
-                                  style:
-                                      TextStyle(fontWeight: FontWeight.w600)),
-                            ),
+                            Text("Complete",
+                                style: TextStyle(fontWeight: FontWeight.w600)),
                           ],
                         ),
                       ),
@@ -289,12 +284,8 @@ class _HomePageState extends State<HomePage> {
                                       fit: BoxFit.fill),
                                   color: Colors.grey.shade200),
                             ),
-                            Padding(
-                              padding: const EdgeInsets.all(2.0),
-                              child: Text("Tips",
-                                  style:
-                                      TextStyle(fontWeight: FontWeight.w600)),
-                            ),
+                            Text("Tips",
+                                style: TextStyle(fontWeight: FontWeight.w600)),
                           ],
                         ),
                       ),

@@ -4,7 +4,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import 'Welcome.dart';
+import '../adminDash.dart';
+
 
 class Adminlogin extends StatefulWidget {
   const Adminlogin({
@@ -25,7 +26,7 @@ class _AdminloginState extends State<Adminlogin> {
     if (Name.text == 'kmo@gmail.com' && Pass.text == '123') {
       Navigator.push(context, MaterialPageRoute(
         builder: (context) {
-          return Welcome();
+          return AdminDash();
         },
       ));
     }

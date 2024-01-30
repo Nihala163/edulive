@@ -2,6 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import 'Admin/Add video.dart';
+import 'Admin/Video list.dart';
+import 'Admin/View user login.dart';
+import 'addPdf/NoteList.dart';
+import 'addQuiz/addQuiz.dart';
+import 'addPdf/AddNote.dart';
+import 'addQuiz/quizList.dart';
+
 const whiteone = Color(0xfff5f6f9);
 const customBalck = Color(0xff000000);
 const white = Color(0xffFFFFFF);
@@ -34,9 +42,9 @@ class _AdminDashState extends State<AdminDash> {
 
 
   List Screens = [
-    addvideo(),
-    addquiz(),
-    addnote(),
+    VideoList(),
+    QuizList(),
+    NoteList(),
     addbanner()
   ];
 
@@ -63,7 +71,7 @@ class _AdminDashState extends State<AdminDash> {
                   size: 30,
                 ),
                 Positioned(
-                  // notification Icon......
+                  // notification Icon.......
                     left: 17.r,
                     top: 5.r,
                     child: CircleAvatar(
@@ -102,11 +110,11 @@ class _AdminDashState extends State<AdminDash> {
             itemBuilder: (context, index) {
               return InkWell(
                 onTap: () {
-                  // Navigator.push(
-                  //     context,
-                  //     MaterialPageRoute(
-                  //       builder: (context) => StudentList(),
-                  //     ));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => Viewuserlogin(),
+                      ));
                 },
                 child: Container(
                   height: 300.h,
@@ -239,34 +247,6 @@ class AppText extends StatelessWidget {
       overflow: TextOverflow.ellipsis,
       maxLines: 1,
     );
-  }
-}
-
-
-class addvideo extends StatelessWidget {
-  const addvideo({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(body: Center(child: Text('add Video'),),);
-  }
-}
-
-class addquiz extends StatelessWidget {
-  const addquiz({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(body: Center(child: Text('addquiz'),),);
-  }
-}
-
-class addnote extends StatelessWidget {
-  const addnote({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(body: Center(child: Text('addnote'),),);
   }
 }
 
