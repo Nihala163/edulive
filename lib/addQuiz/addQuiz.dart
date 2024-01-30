@@ -153,7 +153,13 @@ class _AddQuestionScreenState extends State<AddQuestionScreen> {
                         btncolor: customBalck,
                         click: () async {
                           if (formkey.currentState!.validate()) {
+                            setState(() {
+                              isLoading=true;
+                            });
                             await addQuestionToFirebase();
+                            setState(() {
+                              isLoading = false;
+                            });
                           }
                         },
                         bordercolor: customBalck,
@@ -172,9 +178,7 @@ class _AddQuestionScreenState extends State<AddQuestionScreen> {
   }
 
   Future<void> addQuestionToFirebase() async {
-    setState(() {
-      isLoading = true;
-    });
+
     await FirebaseFirestore.instance.collection('questions').add({
       'question': questionController.text.trim(),
       'options': [
@@ -186,6 +190,7 @@ class _AddQuestionScreenState extends State<AddQuestionScreen> {
       'answer option': answerController.text.trim(),
       'topic': topicController.text.trim()
     });
+
     questionController.clear();
     option1Controller.clear();
     option2Controller.clear();
@@ -193,9 +198,7 @@ class _AddQuestionScreenState extends State<AddQuestionScreen> {
     option4Controller.clear();
     answerController.clear();
     topicController.clear();
-    setState(() {
-      isLoading = false;
-    });
+
   }
 }
 
