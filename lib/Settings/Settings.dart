@@ -27,7 +27,7 @@ class _SettingsState extends State<Settings> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey.shade200,
+
       appBar: AppBar(
         leading: IconButton(
             onPressed: () {
@@ -54,13 +54,7 @@ class _SettingsState extends State<Settings> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 InkWell(
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => Profilepage(),
-                        ));
-                  },
+                  onTap: () {},
                   child: Container(
                     height: 110.h,
                     width: 330.w,
