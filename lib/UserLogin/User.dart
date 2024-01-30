@@ -37,8 +37,8 @@ class _UserLoginState extends State<UserLogin> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Container(
-                  height: 200.h,
-                  width: 200.w,
+                  height: 250.h,
+                  width: 250.w,
                   decoration: BoxDecoration(
                       image:
                           DecorationImage(image: AssetImage("assets/Mob.png"))),
@@ -49,6 +49,7 @@ class _UserLoginState extends State<UserLogin> {
           Padding(
             padding: EdgeInsets.only(top: 50.h, left: 50.w, right: 50.w),
             child: IntlPhoneField(
+
               decoration: InputDecoration(
                 labelText: 'Phone Number',
                 border: OutlineInputBorder(
@@ -88,7 +89,7 @@ class _UserLoginState extends State<UserLogin> {
                     height: 50.h,
                     width: 180.w,
                     decoration: BoxDecoration(
-                        color: Colors.indigo.shade100,
+                        color: Colors.indigo.shade900,
                         borderRadius: BorderRadius.circular(10),
                         boxShadow: [
                           BoxShadow(
@@ -102,7 +103,7 @@ class _UserLoginState extends State<UserLogin> {
                       style: GoogleFonts.poppins(
                           fontSize: 15.sp,
                           fontWeight: FontWeight.w600,
-                          color: Colors.black87),
+                          color: Colors.white),
                     )),
                   ),
                 )
