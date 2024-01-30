@@ -1,6 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:edulive/Quiz/Answer.dart';
-import 'package:edulive/Quiz/answerCard.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
