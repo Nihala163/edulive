@@ -33,12 +33,11 @@ class _AdminDashState extends State<AdminDash> {
   ];
 
 
-
   List Screens = [
-    Text("add video"),
-    Text("quizScreen"),
-    Text("note screen"),
-    Text("banner"),
+    addvideo(),
+    addquiz(),
+    addnote(),
+    addbanner()
   ];
 
   @override
@@ -64,7 +63,7 @@ class _AdminDashState extends State<AdminDash> {
                   size: 30,
                 ),
                 Positioned(
-                    // notification Icon......
+                  // notification Icon......
                     left: 17.r,
                     top: 5.r,
                     child: CircleAvatar(
@@ -117,7 +116,9 @@ class _AdminDashState extends State<AdminDash> {
                         color: Colors.black.withOpacity(0.3),
                         blurRadius: 5.0,
                         offset: const Offset(0.0, 3.0)),
-                  ], borderRadius: BorderRadius.circular(15).r, color: white),
+                  ], borderRadius: BorderRadius
+                      .circular(15)
+                      .r, color: white),
                   child: Padding(
                     padding: const EdgeInsets.all(5).r,
                     child: Column(
@@ -181,7 +182,9 @@ class _AdminDashState extends State<AdminDash> {
                         color: Colors.black.withOpacity(0.3),
                         blurRadius: 5.0,
                         offset: const Offset(0.0, 3.0)),
-                  ], borderRadius: BorderRadius.circular(15).r, color: white),
+                  ], borderRadius: BorderRadius
+                      .circular(15)
+                      .r, color: white),
                   child: Padding(
                     padding: const EdgeInsets.all(5).r,
                     child: Column(
@@ -215,13 +218,12 @@ class _AdminDashState extends State<AdminDash> {
 }
 
 class AppText extends StatelessWidget {
-  const AppText(
-      //Custom Text Widget.....
-      {super.key,
-      required this.text,
-      required this.weight,
-      required this.size,
-      required this.textcolor});
+  const AppText(//Custom Text Widget.....
+          {super.key,
+        required this.text,
+        required this.weight,
+        required this.size,
+        required this.textcolor});
 
   final String text;
   final FontWeight weight;
@@ -237,5 +239,42 @@ class AppText extends StatelessWidget {
       overflow: TextOverflow.ellipsis,
       maxLines: 1,
     );
+  }
+}
+
+
+class addvideo extends StatelessWidget {
+  const addvideo({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(body: Center(child: Text('add Video'),),);
+  }
+}
+
+class addquiz extends StatelessWidget {
+  const addquiz({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(body: Center(child: Text('addquiz'),),);
+  }
+}
+
+class addnote extends StatelessWidget {
+  const addnote({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(body: Center(child: Text('addnote'),),);
+  }
+}
+
+class addbanner extends StatelessWidget {
+  const addbanner({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(body: Center(child: Text('addbanner'),),);
   }
 }

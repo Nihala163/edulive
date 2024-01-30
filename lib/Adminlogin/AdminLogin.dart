@@ -4,7 +4,9 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import 'Welcome.dart';
+import '../addPdf/adminDash.dart';
+
+
 
 class Adminlogin extends StatefulWidget {
   const Adminlogin({
@@ -25,7 +27,7 @@ class _AdminloginState extends State<Adminlogin> {
     if (Name.text == 'kmo@gmail.com' && Pass.text == '123') {
       Navigator.push(context, MaterialPageRoute(
         builder: (context) {
-          return Welcome();
+          return AdminDash();
         },
       ));
     }
@@ -74,37 +76,6 @@ class _AdminloginState extends State<Adminlogin> {
                     )
                   ],
                 ),
-                // TextFormField(
-                //   controller: Name,
-                //   keyboardType: TextInputType.text,
-                //   decoration: InputDecoration(
-                //     fillColor: Colors.white,
-                //     filled: true,
-                //     hintText: 'Enter username',
-                //     prefixIcon: Icon(Icons.person),
-                //     hintStyle: GoogleFonts.poppins(
-                //         fontSize: 13.sp,
-                //         fontWeight: FontWeight.w400,
-                //         color: Color(0xff878787)),
-                //     contentPadding:
-                //         EdgeInsets.symmetric(vertical: 10, horizontal: 15).r,
-                //     focusedBorder: OutlineInputBorder(
-                //       borderSide: const BorderSide(color: Color(0xff668796)),
-                //       borderRadius: BorderRadius.circular(8).r,
-                //     ),
-                //     enabledBorder: OutlineInputBorder(
-                //       borderSide: BorderSide.none,
-                //       borderRadius: BorderRadius.circular(8).r,
-                //     ),
-                //     // border: const OutlineInputBorder(
-                //     //     borderSide: BorderSide.none)
-                //   ),
-                //   validator: (value) {
-                //     if (value!.isEmpty) {
-                //       return "Enter valied phone number";
-                //     }
-                //   },
-                // ),
                 SizedBox(
                   height: 50.h,
                 ),
@@ -155,7 +126,8 @@ class _AdminloginState extends State<Adminlogin> {
                               fillColor: Colors.white,
                               filled: true,
                               prefixIcon: Icon(Icons.lock),
-                              contentPadding: EdgeInsets.symmetric(vertical: 10),
+                              contentPadding:
+                                  EdgeInsets.symmetric(vertical: 10),
                               suffixIcon: GestureDetector(
                                   onTap: () {
                                     setState(() {

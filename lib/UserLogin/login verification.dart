@@ -6,6 +6,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:pinput/pinput.dart';
 
+import 'UserRegister.dart';
+
 class UserLogin extends StatefulWidget {
   const UserLogin({super.key});
 
@@ -37,8 +39,8 @@ class _UserLoginState extends State<UserLogin> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Container(
-                  height: 200.h,
-                  width: 200.w,
+                  height: 250.h,
+                  width: 250.w,
                   decoration: BoxDecoration(
                       image:
                           DecorationImage(image: AssetImage("assets/Mob.png"))),
@@ -78,17 +80,17 @@ class _UserLoginState extends State<UserLogin> {
               children: [
                 InkWell(
                   onTap: () {
-                    // Navigator.push(
-                    //     context,
-                    //     MaterialPageRoute(
-                    //       builder: (context) => ForgottNewpassword(),
-                    //     ));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => Userregister(),
+                        ));
                   },
                   child: Container(
                     height: 50.h,
                     width: 180.w,
                     decoration: BoxDecoration(
-                        color: Colors.indigo.shade100,
+                        color: Colors.indigo.shade900,
                         borderRadius: BorderRadius.circular(10),
                         boxShadow: [
                           BoxShadow(
@@ -102,7 +104,7 @@ class _UserLoginState extends State<UserLogin> {
                       style: GoogleFonts.poppins(
                           fontSize: 15.sp,
                           fontWeight: FontWeight.w600,
-                          color: Colors.black87),
+                          color: Colors.white),
                     )),
                   ),
                 )
