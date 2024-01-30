@@ -6,6 +6,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:pinput/pinput.dart';
 
+import 'UserRegister.dart';
+
 class UserLogin extends StatefulWidget {
   const UserLogin({super.key});
 
@@ -49,7 +51,6 @@ class _UserLoginState extends State<UserLogin> {
           Padding(
             padding: EdgeInsets.only(top: 50.h, left: 50.w, right: 50.w),
             child: IntlPhoneField(
-
               decoration: InputDecoration(
                 labelText: 'Phone Number',
                 border: OutlineInputBorder(
@@ -79,11 +80,11 @@ class _UserLoginState extends State<UserLogin> {
               children: [
                 InkWell(
                   onTap: () {
-                    // Navigator.push(
-                    //     context,
-                    //     MaterialPageRoute(
-                    //       builder: (context) => ForgottNewpassword(),
-                    //     ));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => Userregister(),
+                        ));
                   },
                   child: Container(
                     height: 50.h,

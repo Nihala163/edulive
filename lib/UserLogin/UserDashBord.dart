@@ -106,8 +106,8 @@ class _HomePageState extends State<HomePage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
-                  height: 250.h,
-                  width: 330.w,
+                  height: 290.h,
+                  width: 340.w,
                   decoration: BoxDecoration(
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(10),
@@ -120,8 +120,8 @@ class _HomePageState extends State<HomePage> {
                   child: GridView.count(
                     primary: false,
                     padding: const EdgeInsets.all(20),
-                    crossAxisSpacing: 10,
-                    mainAxisSpacing: 10,
+                    crossAxisSpacing: 5,
+                    mainAxisSpacing: 5,
                     crossAxisCount: 3,
                     children: <Widget>[
                       Container(
@@ -144,12 +144,8 @@ class _HomePageState extends State<HomePage> {
                                       fit: BoxFit.fill),
                                   color: Colors.grey.shade200),
                             ),
-                            Padding(
-                              padding: const EdgeInsets.all(2.0),
-                              child: Text("Quiz",
-                                  style:
-                                      TextStyle(fontWeight: FontWeight.w600)),
-                            ),
+                            Text("Quiz",
+                                style: TextStyle(fontWeight: FontWeight.w600)),
                           ],
                         ),
                       ),
@@ -173,12 +169,8 @@ class _HomePageState extends State<HomePage> {
                                       fit: BoxFit.fill),
                                   color: Colors.grey.shade200),
                             ),
-                            Padding(
-                              padding: const EdgeInsets.all(2.0),
-                              child: Text("Material",
-                                  style:
-                                      TextStyle(fontWeight: FontWeight.w600)),
-                            ),
+                            Text("Material",
+                                style: TextStyle(fontWeight: FontWeight.w600)),
                           ],
                         ),
                       ),
@@ -202,12 +194,8 @@ class _HomePageState extends State<HomePage> {
                                       fit: BoxFit.fill),
                                   color: Colors.grey.shade200),
                             ),
-                            Padding(
-                              padding: const EdgeInsets.all(2.0),
-                              child: Text("Video",
-                                  style:
-                                      TextStyle(fontWeight: FontWeight.w600)),
-                            ),
+                            Text("Video",
+                                style: TextStyle(fontWeight: FontWeight.w600)),
                           ],
                         ),
                       ),
@@ -231,12 +219,8 @@ class _HomePageState extends State<HomePage> {
                                       fit: BoxFit.fill),
                                   color: Colors.grey.shade200),
                             ),
-                            Padding(
-                              padding: const EdgeInsets.all(2.0),
-                              child: Text("Todo",
-                                  style:
-                                      TextStyle(fontWeight: FontWeight.w600)),
-                            ),
+                            Text("Todo",
+                                style: TextStyle(fontWeight: FontWeight.w600)),
                           ],
                         ),
                       ),
@@ -260,12 +244,8 @@ class _HomePageState extends State<HomePage> {
                                       fit: BoxFit.fill),
                                   color: Colors.grey.shade200),
                             ),
-                            Padding(
-                              padding: const EdgeInsets.all(2.0),
-                              child: Text("Compleate",
-                                  style:
-                                      TextStyle(fontWeight: FontWeight.w600)),
-                            ),
+                            Text("Complete",
+                                style: TextStyle(fontWeight: FontWeight.w600)),
                           ],
                         ),
                       ),
@@ -289,12 +269,8 @@ class _HomePageState extends State<HomePage> {
                                       fit: BoxFit.fill),
                                   color: Colors.grey.shade200),
                             ),
-                            Padding(
-                              padding: const EdgeInsets.all(2.0),
-                              child: Text("Tips",
-                                  style:
-                                      TextStyle(fontWeight: FontWeight.w600)),
-                            ),
+                            Text("Tips",
+                                style: TextStyle(fontWeight: FontWeight.w600)),
                           ],
                         ),
                       ),
