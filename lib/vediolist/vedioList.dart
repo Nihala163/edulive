@@ -1,5 +1,10 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:edulive/vediolist/VedioPlayer.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:youtube_player_flutter/youtube_player_flutter.dart';
+
+import '../Admin/Add video.dart';
 
 class VedioList extends StatefulWidget {
   const VedioList({super.key});
@@ -32,15 +37,6 @@ class _VedioListState extends State<VedioList> {
               icon: Icon(Icons.search))
         ],
       ),
-      floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => AddVideo(),
-                ));
-          },
-          child: Icon(Icons.add)),
       body: StreamBuilder(
           stream: FirebaseFirestore.instance
               .collection('FirstyearVediourl')
@@ -99,11 +95,15 @@ class _VedioListState extends State<VedioList> {
                         ));
                       },
                       child: ListTile(
-                        leading: Image.network(
-                          YoutubePlayer.getThumbnail(
-                            videoId: Links[index]['url'],
+                        leading: SizedBox(
+                          height: 50,
+                          width: 100,
+                          child: Image.network(
+                            YoutubePlayer.getThumbnail(
+                              videoId: Links[index]['url'],
+                            ),
+                            fit: BoxFit.cover,
                           ),
-                          // fit: BoxFit.cover,
                         ),
                         title: Text(Links[index]['course']),
                         subtitle: Text('More about Courses'),
