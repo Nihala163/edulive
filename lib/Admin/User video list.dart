@@ -12,14 +12,14 @@ import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 import 'Video player.dart';
 
-class AdminvideoList extends StatefulWidget {
-  const AdminvideoList({super.key});
+class Uservideolist extends StatefulWidget {
+  const Uservideolist({super.key});
 
   @override
-  State<AdminvideoList> createState() => _AdminvideoListState();
+  State<Uservideolist> createState() => _UservideolistState();
 }
 
-class _AdminvideoListState extends State<AdminvideoList> {
+class _UservideolistState extends State<Uservideolist> {
   var Links;
   var searchName = '';
   final TextEditingController searchController = TextEditingController();
