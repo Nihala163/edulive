@@ -1,5 +1,3 @@
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -19,7 +17,7 @@ class ReviewUI extends StatelessWidget {
     required this.comment,
     required this.rating,
     required this.onTttap,
-    this.isLess=true,
+    this.isLess = true,
   });
 
   @override
@@ -56,6 +54,7 @@ class ReviewUI extends StatelessWidget {
           children: [
             RatingBar.builder(
               itemSize: 18,
+              ignoreGestures: true,
               initialRating: rating,
               minRating: 1,
               direction: Axis.horizontal,
@@ -81,21 +80,20 @@ class ReviewUI extends StatelessWidget {
         ),
         GestureDetector(
             onTap: onTttap,
-            child:  isLess
+            child: isLess
                 ? Text(
-              comment,
-              maxLines: 2,
-              overflow: TextOverflow.ellipsis,
-              style: GoogleFonts.poppins(
-                  fontSize: 16.sp, color: Colors.brown),
-            )
+                    comment,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    style: GoogleFonts.poppins(
+                        fontSize: 16.sp, color: Colors.brown),
+                  )
                 : Text(
-              comment,
-              style: GoogleFonts.poppins(
-                  fontSize: 16.sp, color: Colors.brown),
-            )),
+                    comment,
+                    style: GoogleFonts.poppins(
+                        fontSize: 16.sp, color: Colors.brown),
+                  )),
       ],
     );
   }
 }
-
