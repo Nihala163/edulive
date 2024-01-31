@@ -27,7 +27,7 @@ class _SettingsState extends State<Settings> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey.shade200,
+
       appBar: AppBar(
         leading: IconButton(
             onPressed: () {
@@ -54,15 +54,9 @@ class _SettingsState extends State<Settings> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 InkWell(
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => Profilepage(),
-                        ));
-                  },
+                  onTap: () {},
                   child: Container(
-                    height: 90.h,
+                    height: 110.h,
                     width: 330.w,
                     decoration: BoxDecoration(
                         color: Colors.white,
@@ -317,7 +311,7 @@ class _SettingsState extends State<Settings> {
                                         fontSize: 16.sp,
                                         fontWeight: FontWeight.w600)),
                                 Padding(
-                                  padding: EdgeInsets.only(left: 10.w),
+                                  padding: EdgeInsets.only(left: 1.w),
                                   child: Switch(
                                     inactiveThumbColor: Colors.black87,
                                     inactiveTrackColor: Colors.grey.shade200,
@@ -382,7 +376,7 @@ class _SettingsState extends State<Settings> {
                                         fontSize: 16.sp,
                                         fontWeight: FontWeight.w600)),
                                 Padding(
-                                  padding: EdgeInsets.only(left: 10.w),
+                                  padding: EdgeInsets.only(left: 1.w),
                                   child: Switch(
                                     inactiveThumbColor: Colors.black87,
                                     inactiveTrackColor: Colors.grey.shade200,

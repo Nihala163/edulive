@@ -2,10 +2,9 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-
-import 'feedback_and_rating/feedBack.dart';
+import 'UserLogin/UserDashBord.dart';
 import 'firebase_options.dart';
-
+import 'network notification.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -28,7 +27,7 @@ class MyApp extends StatelessWidget {
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
             useMaterial3: true,
           ),
-          home: FeedBackUp()),
+          home: HomePage()),
       designSize: Size(390, 844),
     );
   }
