@@ -86,26 +86,30 @@ class _UserLoginState extends State<UserLogin> {
                           builder: (context) => Userregister(),
                         ));
                   },
-                  child: Container(
-                    height: 50.h,
-                    width: 180.w,
-                    decoration: BoxDecoration(
-                        color: Colors.indigo.shade900,
-                        borderRadius: BorderRadius.circular(10),
-                        boxShadow: [
-                          BoxShadow(
-                              color: Colors.black.withOpacity(0.3),
-                              blurRadius: 5.0,
-                              offset: const Offset(0.0, 3.0)),
-                        ]),
-                    child: Center(
-                        child: Text(
-                      "Sent code",
-                      style: GoogleFonts.poppins(
-                          fontSize: 15.sp,
-                          fontWeight: FontWeight.w600,
-                          color: Colors.white),
-                    )),
+                  child: InkWell(onTap:() {
+                    Userregister();
+                  },
+                    child: Container(
+                      height: 50.h,
+                      width: 180.w,
+                      decoration: BoxDecoration(
+                          color: Colors.indigo.shade900,
+                          borderRadius: BorderRadius.circular(10),
+                          boxShadow: [
+                            BoxShadow(
+                                color: Colors.black.withOpacity(0.3),
+                                blurRadius: 5.0,
+                                offset: const Offset(0.0, 3.0)),
+                          ]),
+                      child: Center(
+                          child: Text(
+                        "Sent code",
+                        style: GoogleFonts.poppins(
+                            fontSize: 15.sp,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.white),
+                      )),
+                    ),
                   ),
                 )
               ],

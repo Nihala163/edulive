@@ -3,7 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../Admin/Video list.dart';
+import '../Quiz/quizViewuser.dart';
 import '../Settings/Settings.dart';
+import '../addPdf/NoteList.dart';
 import '../profile/Profile.dart';
 
 class HomePage extends StatefulWidget {
@@ -129,49 +132,57 @@ class _HomePageState extends State<HomePage> {
                         color: Colors.white,
                         child: Column(
                           children: [
-                            Container(
-                              height: 50,
-                              width: 70,
-                              decoration: BoxDecoration(
-                                  boxShadow: [
-                                    BoxShadow(
-                                        color: Colors.black.withOpacity(0.3),
-                                        blurRadius: 5.0,
-                                        offset: const Offset(0.0, 3.0)),
-                                  ],
-                                  image: DecorationImage(
-                                      image: AssetImage("assets/quiz.png"),
-                                      fit: BoxFit.fill),
-                                  color: Colors.grey.shade200),
+                            InkWell(onTap: () {
+                              QuizView();
+                            },
+                              child: Container(
+                                height: 50,
+                                width: 70,
+                                decoration: BoxDecoration(
+                                    boxShadow: [
+                                      BoxShadow(
+                                          color: Colors.black.withOpacity(0.3),
+                                          blurRadius: 5.0,
+                                          offset: const Offset(0.0, 3.0)),
+                                    ],
+                                    image: DecorationImage(
+                                        image: AssetImage("assets/quiz.png"),
+                                        fit: BoxFit.fill),
+                                    color: Colors.grey.shade200),
+                              ),
                             ),
                             Text("Quiz",
                                 style: TextStyle(fontWeight: FontWeight.w600)),
                           ],
                         ),
                       ),
-                      Container(
-                        padding: const EdgeInsets.all(8),
-                        color: Colors.white,
-                        child: Column(
-                          children: [
-                            Container(
-                              height: 50,
-                              width: 70,
-                              decoration: BoxDecoration(
-                                  boxShadow: [
-                                    BoxShadow(
-                                        color: Colors.black.withOpacity(0.3),
-                                        blurRadius: 5.0,
-                                        offset: const Offset(0.0, 3.0)),
-                                  ],
-                                  image: DecorationImage(
-                                      image: AssetImage("assets/std.png"),
-                                      fit: BoxFit.fill),
-                                  color: Colors.grey.shade200),
-                            ),
-                            Text("Material",
-                                style: TextStyle(fontWeight: FontWeight.w600)),
-                          ],
+                      InkWell(onTap: () {
+                        NoteList();
+                      },
+                        child: Container(
+                          padding: const EdgeInsets.all(8),
+                          color: Colors.white,
+                          child: Column(
+                            children: [
+                              Container(
+                                height: 50,
+                                width: 70,
+                                decoration: BoxDecoration(
+                                    boxShadow: [
+                                      BoxShadow(
+                                          color: Colors.black.withOpacity(0.3),
+                                          blurRadius: 5.0,
+                                          offset: const Offset(0.0, 3.0)),
+                                    ],
+                                    image: DecorationImage(
+                                        image: AssetImage("assets/std.png"),
+                                        fit: BoxFit.fill),
+                                    color: Colors.grey.shade200),
+                              ),
+                              Text("Material",
+                                  style: TextStyle(fontWeight: FontWeight.w600)),
+                            ],
+                          ),
                         ),
                       ),
                       Container(
@@ -179,20 +190,24 @@ class _HomePageState extends State<HomePage> {
                         color: Colors.white,
                         child: Column(
                           children: [
-                            Container(
-                              height: 50,
-                              width: 70,
-                              decoration: BoxDecoration(
-                                  boxShadow: [
-                                    BoxShadow(
-                                        color: Colors.black.withOpacity(0.3),
-                                        blurRadius: 5.0,
-                                        offset: const Offset(0.0, 3.0)),
-                                  ],
-                                  image: DecorationImage(
-                                      image: AssetImage("assets/video.png"),
-                                      fit: BoxFit.fill),
-                                  color: Colors.grey.shade200),
+                            InkWell(onTap: () {
+                              VideoList();
+                            },
+                              child: Container(
+                                height: 50,
+                                width: 70,
+                                decoration: BoxDecoration(
+                                    boxShadow: [
+                                      BoxShadow(
+                                          color: Colors.black.withOpacity(0.3),
+                                          blurRadius: 5.0,
+                                          offset: const Offset(0.0, 3.0)),
+                                    ],
+                                    image: DecorationImage(
+                                        image: AssetImage("assets/video.png"),
+                                        fit: BoxFit.fill),
+                                    color: Colors.grey.shade200),
+                              ),
                             ),
                             Text("Video",
                                 style: TextStyle(fontWeight: FontWeight.w600)),

@@ -78,7 +78,7 @@ class _AddVideoState extends State<AddVideo> {
               ),
               Spacer(),
               CustomElevatedbutton(
-                  child: Text('post vedio'),
+                  child: Text('post video'),
                   onPressed: () {
                     String? vedioId = YoutubePlayer.convertUrlToId(url.text);
                     uploadurl(vedioId!);

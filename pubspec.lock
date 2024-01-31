@@ -688,6 +688,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.2.1"
+  percent_indicator:
+    dependency: "direct main"
+    description:
+      name: percent_indicator
+      sha256: c37099ad833a883c9d71782321cb65c3a848c21b6939b6185f0ff6640d05814c
+      url: "https://pub.dev"
+    source: hosted
+    version: "4.2.3"
   petitparser:
     dependency: transitive
     description:
@@ -901,8 +909,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.3.0"
-<<<<<<< HEAD
-=======
   webview_flutter:
     dependency: "direct main"
     description:
@@ -959,7 +965,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "6.5.0"
->>>>>>> 6d806a3425ce06154fa4984e326f3560de370d5e
   youtube_player_flutter:
     dependency: "direct main"
     description:
