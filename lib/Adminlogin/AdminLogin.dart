@@ -6,8 +6,6 @@ import 'package:google_fonts/google_fonts.dart';
 
 import '../addPdf/adminDash.dart';
 
-
-
 class Adminlogin extends StatefulWidget {
   const Adminlogin({
     super.key,
@@ -38,6 +36,13 @@ class _AdminloginState extends State<Adminlogin> {
     return Form(
       key: formkey,
       child: Scaffold(
+          appBar: AppBar(
+              leading: IconButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  icon: Icon(Icons.arrow_back_ios)),
+              backgroundColor: Colors.transparent),
           backgroundColor: Colors.indigo.shade100,
           body: SingleChildScrollView(
             child: Column(
