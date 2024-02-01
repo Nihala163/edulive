@@ -1,3 +1,4 @@
+import 'package:edulive/Notification/Notification%20User.dart';
 import 'package:edulive/profile/Profile.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -41,7 +42,13 @@ class _DashBoardState extends State<DashBoard> {
               label: 'Search'),
           BottomNavigationBarItem(
               backgroundColor: Colors.indigo.shade900,
-              icon: Icon(Icons.forward_to_inbox),
+              icon: InkWell(onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return UserPage();
+                },));
+              },
+                  child:
+              Icon(Icons.forward_to_inbox)),
               label: "inbox"),
           BottomNavigationBarItem(
               backgroundColor: Colors.indigo.shade900,
