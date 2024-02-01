@@ -8,7 +8,6 @@ import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:pinput/pinput.dart';
 
 import 'UserRegister.dart';
-import 'UserSighup(2).dart';
 
 class UserLogin extends StatefulWidget {
   const UserLogin({super.key});
