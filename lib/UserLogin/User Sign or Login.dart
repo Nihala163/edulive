@@ -85,7 +85,7 @@ class _SignOrLoginState extends State<SignOrLogin> {
                           ),
                         ),
                         SizedBox(
-                          height: 100,
+                          height: 50,
                         ),
                         Align(
                           alignment: Alignment.center,

@@ -2,7 +2,8 @@ import 'package:edulive/Adminlogin/AdminLogin.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import 'UserLogin/login verification.dart';
+import 'UserLogin/UserSighnup(1).dart';
+
 
 class Logins extends StatefulWidget {
   const Logins({super.key});
