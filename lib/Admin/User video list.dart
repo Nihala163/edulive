@@ -1,40 +1,28 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:edulive/Admin/Add%20video.dart';
-// import 'package:edulivekmo/Searchbar/searchbar.dart';
-// import 'package:edulivekmo/discussion/widgets/searchbar.dart';
-
-// import 'package:edulivekmo/vedio/Vidioplayer.dart';
-// import 'package:edulivekmo/vedio/addvedio.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:pinput/pinput.dart';
-import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
-import 'Video player.dart';
-
-class Uservideolist extends StatefulWidget {
-  const Uservideolist({super.key});
+class VedioList extends StatefulWidget {
+  const VedioList({super.key});
 
   @override
-  State<Uservideolist> createState() => _UservideolistState();
+  State<VedioList> createState() => _VedioListState();
 }
 
-class _UservideolistState extends State<Uservideolist> {
+class _VedioListState extends State<VedioList> {
   var Links;
   var searchName = '';
   final TextEditingController searchController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.cyan[50],
       appBar: AppBar(
-        backgroundColor: Colors.cyan[50],
-        surfaceTintColor: Colors.cyan[50],
-        title: Text('Video List'),
+        title: Text('Vedio List'),
         centerTitle: true,
         actions: [
           IconButton(
               onPressed: () {
+                showSearch(
+                    context: context, delegate: CustomSearchDelegate(Links));
                 // Navigator.push(context, MaterialPageRoute(
                 //   builder: (context) {
                 //     return Searchbar5();
@@ -44,15 +32,15 @@ class _UservideolistState extends State<Uservideolist> {
               icon: Icon(Icons.search))
         ],
       ),
-      // floatingActionButton: FloatingActionButton(
-      //     onPressed: () {
-      //       Navigator.push(
-      //           context,
-      //           MaterialPageRoute(
-      //             builder: (context) => AddVideo(),
-      //           ));
-      //     },
-      //     child: Icon(Icons.add)),
+      floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => AddVideo(),
+                ));
+          },
+          child: Icon(Icons.add)),
       body: StreamBuilder(
           stream: FirebaseFirestore.instance
               .collection('FirstyearVediourl')
@@ -110,42 +98,23 @@ class _UservideolistState extends State<Uservideolist> {
                           },
                         ));
                       },
-                      child: Padding(
-                        padding:
-                            const EdgeInsets.only(left: 20, right: 20, top: 20)
-                                .r,
-                        child: Container(
-                          height: 100.h,
-                          decoration: BoxDecoration(
-                              boxShadow: [
-                                BoxShadow(
-                                    color: Colors.black.withOpacity(0.3),
-                                    blurRadius: 5.0,
-                                    offset: const Offset(0.0, 3.0)),
-                              ],
-                              borderRadius: BorderRadius.circular(10).r,
-                              color: Colors.cyan[100]),
-                          child: Center(
-                            child: ListTile(
-                              leading: Image.network(
-                                YoutubePlayer.getThumbnail(
-                                  videoId: Links[index]['url'],
-                                ),
-                                // fit: BoxFit.cover,
-                              ),
-                              title: Text(Links[index]['course']),
-                              subtitle: Text('More about Courses'),
-                              // trailing: IconButton(
-                              //   onPressed: () {
-                              //     FirebaseFirestore.instance
-                              //         .collection('FirstyearVediourl')
-                              //         .doc(Links[index].id)
-                              //         .delete();
-                              //   },
-                              //   icon: Icon(Icons.delete),
-                              // ),
-                            ),
+                      child: ListTile(
+                        leading: Image.network(
+                          YoutubePlayer.getThumbnail(
+                            videoId: Links[index]['url'],
                           ),
+                          // fit: BoxFit.cover,
+                        ),
+                        title: Text(Links[index]['course']),
+                        subtitle: Text('More about Courses'),
+                        trailing: IconButton(
+                          onPressed: () {
+                            FirebaseFirestore.instance
+                                .collection('FirstyearVediourl')
+                                .doc(Links[index].id)
+                                .delete();
+                          },
+                          icon: Icon(Icons.delete),
                         ),
                       ),
                     );
@@ -159,8 +128,8 @@ class _UservideolistState extends State<Uservideolist> {
 }
 
 class CustomSearchDelegate extends SearchDelegate {
-  CustomSearchDelegate(this.links);
-  final links;
+  CustomSearchDelegate(this.Links);
+  final Links;
 
   List<String> searchTerms = [];
 
@@ -214,6 +183,7 @@ class CustomSearchDelegate extends SearchDelegate {
   @override
   Widget buildSuggestions(BuildContext context) {
     List<String> matchQuery = [];
+    // matchQuery.add(Links[Index]['course']);
     for (var fruit in searchTerms) {
       if (fruit.toLowerCase().contains(query.toLowerCase())) {
         matchQuery.add(fruit);
