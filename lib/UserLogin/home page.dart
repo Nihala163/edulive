@@ -1,13 +1,13 @@
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:edulive/Admin/User%20video%20list.dart';
-import 'package:edulive/todo/todo.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+
 import '../Admin/Video list.dart';
 import '../Quiz/quizViewuser.dart';
 import '../Settings/Settings.dart';
 import '../addPdf/NoteList.dart';
+import '../profile/Profile.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -133,9 +133,7 @@ class _HomePageState extends State<HomePage> {
                         child: Column(
                           children: [
                             InkWell(onTap: () {
-                              Navigator.push(context, MaterialPageRoute(builder: (context) {
-                                return QuizView();
-                              },));
+                              QuizView();
                             },
                               child: Container(
                                 height: 50,
@@ -159,9 +157,7 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ),
                       InkWell(onTap: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context) {
-                          return NoteList();
-                        },));
+                        NoteList();
                       },
                         child: Container(
                           padding: const EdgeInsets.all(8),
@@ -195,9 +191,7 @@ class _HomePageState extends State<HomePage> {
                         child: Column(
                           children: [
                             InkWell(onTap: () {
-                              Navigator.push(context, MaterialPageRoute(builder: (context) {
-                                return VideoList();
-                              },));
+                              VideoList();
                             },
                               child: Container(
                                 height: 50,
@@ -220,35 +214,29 @@ class _HomePageState extends State<HomePage> {
                           ],
                         ),
                       ),
-                      InkWell(onTap: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context) {
-                          return AddTodo();
-                        },));
-                      },
-                        child: Container(
-                          padding: const EdgeInsets.all(8),
-                          color: Colors.white,
-                          child: Column(
-                            children: [
-                              Container(
-                                height: 50,
-                                width: 70,
-                                decoration: BoxDecoration(
-                                    boxShadow: [
-                                      BoxShadow(
-                                          color: Colors.black.withOpacity(0.3),
-                                          blurRadius: 5.0,
-                                          offset: const Offset(0.0, 3.0)),
-                                    ],
-                                    image: DecorationImage(
-                                        image: AssetImage("assets/todo.png"),
-                                        fit: BoxFit.fill),
-                                    color: Colors.grey.shade200),
-                              ),
-                              Text("Todo",
-                                  style: TextStyle(fontWeight: FontWeight.w600)),
-                            ],
-                          ),
+                      Container(
+                        padding: const EdgeInsets.all(8),
+                        color: Colors.white,
+                        child: Column(
+                          children: [
+                            Container(
+                              height: 50,
+                              width: 70,
+                              decoration: BoxDecoration(
+                                  boxShadow: [
+                                    BoxShadow(
+                                        color: Colors.black.withOpacity(0.3),
+                                        blurRadius: 5.0,
+                                        offset: const Offset(0.0, 3.0)),
+                                  ],
+                                  image: DecorationImage(
+                                      image: AssetImage("assets/todo.png"),
+                                      fit: BoxFit.fill),
+                                  color: Colors.grey.shade200),
+                            ),
+                            Text("Todo",
+                                style: TextStyle(fontWeight: FontWeight.w600)),
+                          ],
                         ),
                       ),
                       Container(

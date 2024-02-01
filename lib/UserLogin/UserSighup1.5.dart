@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
@@ -6,11 +7,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:pinput/pinput.dart';
 import 'package:sms_autofill/sms_autofill.dart';
 
-import '../Settings/Settings.dart';
 import 'UserSighup(2).dart';
 
 class Sighup15 extends StatefulWidget {
@@ -70,12 +69,21 @@ class _Sighup15State extends State<Sighup15> with CodeAutoFill {
 
       await FirebaseAuth.instance.signInWithCredential(credential);
 
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(
-          builder: (context) => UserSignup(),
-        ),
-      );
+      FirebaseFirestore.instance
+          .collection("UserSignup")
+          .add({"PhoneNumber": otpController}).then(
+              (value) => Navigator.pushReplacement(context, MaterialPageRoute(
+                    builder: (context) {
+                      return UserSignup();
+                    },
+                  )));
+
+      // Navigator.pushReplacement(
+      //   context,
+      //   MaterialPageRoute(
+      //     builder: (context) => UserSignup(id: [index].id),
+      //   ),
+      // );
     } catch (e) {
       if (kDebugMode) {
         print("Error during OTP validation: $e");
