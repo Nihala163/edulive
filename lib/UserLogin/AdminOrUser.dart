@@ -80,7 +80,7 @@ class _AdminOrUserState extends State<AdminOrUser> {
                           ),
                         ),
                         SizedBox(
-                          height: 100,
+                          height: 50,
                         ),
                         Align(
                           alignment: Alignment.center,
