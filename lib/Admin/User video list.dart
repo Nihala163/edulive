@@ -5,14 +5,14 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
-class VideoList extends StatefulWidget {
-  const VideoList({super.key});
+class Uservideolist extends StatefulWidget {
+  const Uservideolist({super.key});
 
   @override
-  State<VideoList> createState() => _VideoListState();
+  State<Uservideolist> createState() => _UservideolistState();
 }
 
-class _VideoListState extends State<VideoList> {
+class _UservideolistState extends State<Uservideolist> {
   var Links;
   var searchName = '';
   final TextEditingController searchController = TextEditingController();
