@@ -1,3 +1,4 @@
+import 'package:edulive/Notification/Notification%20Admin.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -6,8 +7,6 @@ import 'Admin/Add video.dart';
 import 'Admin/Video list.dart';
 import 'Admin/View user login.dart';
 import 'addPdf/NoteList.dart';
-import 'addQuiz/addQuiz.dart';
-import 'addPdf/AddNote.dart';
 import 'addQuiz/quizList.dart';
 
 const whiteone = Color(0xfff5f6f9);
@@ -31,6 +30,7 @@ class _AdminDashState extends State<AdminDash> {
     "assets/quiz.png",
     "assets/note.png",
     "assets/banner.png",
+    "assets/star-rating.png",
   ];
 
   List services = [
@@ -38,6 +38,7 @@ class _AdminDashState extends State<AdminDash> {
     "Manage Quiz ",
     "Add Notes",
     "Add offers",
+    "Reviews"
   ];
 
 
@@ -62,7 +63,9 @@ class _AdminDashState extends State<AdminDash> {
         actions: [
           IconButton(onPressed: () {}, icon: const Icon(Icons.search)),
           InkWell(
-            onTap: () {},
+            onTap: () {Navigator.push(context, MaterialPageRoute(builder: (context) {
+              return AdminPage();
+            },));},
             child: Stack(
               children: [
                 const Icon(

@@ -107,23 +107,26 @@ class _VideoListState extends State<VideoList> {
                           },
                         ));
                       },
-                      child: ListTile(
-                        leading: Image.network(
-                          YoutubePlayer.getThumbnail(
-                            videoId: Links[index]['url'],
+                      child: Padding(
+                        padding: const EdgeInsets.only(top: 10).r,
+                        child: ListTile(
+                          leading: Image.network(
+                            YoutubePlayer.getThumbnail(
+                              videoId: Links[index]['url'],
+                            ),
+                            // fit: BoxFit.cover,
                           ),
-                          // fit: BoxFit.cover,
-                        ),
-                        title: Text(Links[index]['course']),
-                        subtitle: Text('More about Courses'),
-                        trailing: IconButton(
-                          onPressed: () {
-                            FirebaseFirestore.instance
-                                .collection('FirstyearVediourl')
-                                .doc(Links[index].id)
-                                .delete();
-                          },
-                          icon: Icon(Icons.delete),
+                          title: Text(Links[index]['course']),
+                          subtitle: Text('More about Courses'),
+                          trailing: IconButton(
+                            onPressed: () {
+                              FirebaseFirestore.instance
+                                  .collection('FirstyearVediourl')
+                                  .doc(Links[index].id)
+                                  .delete();
+                            },
+                            icon: Icon(Icons.delete),
+                          ),
                         ),
                       ),
                     );
