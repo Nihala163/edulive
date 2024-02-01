@@ -1,4 +1,6 @@
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:edulive/Admin/View%20user%20profile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -9,7 +11,8 @@ const customBalck = Color(0xff000000);
 const white = Color(0xffFFFFFF);
 
 class StudentProgress extends StatefulWidget {
-  const StudentProgress({super.key});
+  const StudentProgress({super.key, required this.id});
+  final id;
 
   @override
   State<StudentProgress> createState() => _StudentProgressState();
@@ -40,26 +43,46 @@ class _StudentProgressState extends State<StudentProgress> {
             height: 200,
             width: double.infinity,
             child:
-                Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-              const CircleAvatar(
-                radius: 50,
-                backgroundImage: NetworkImage(
-                    "https://t4.ftcdn.net/jpg/05/52/94/89/360_F_552948967_rfWkVCstu3t9ypSnpt2ZePVnuqoi6D6o.jpg"),
-              ),
-              SizedBox(
-                height: 10.h,
-              ),
-              const AppText(
-                  text: "Tezza",
-                  weight: FontWeight.w400,
-                  size: 20,
-                  textcolor: customBalck),
-              const AppText(
-                  text: "B com",
-                  weight: FontWeight.w400,
-                  size: 17,
-                  textcolor: customBalck)
-            ]),
+                StreamBuilder(
+                    stream: FirebaseFirestore.instance
+                        .collection("UserRegister")
+                        .doc(widget.id)
+                        .snapshots(),
+                  builder: (context, snapshot) {
+
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return Center(
+                        child: CircularProgressIndicator(),
+                      );
+                    }
+
+                    if (snapshot.hasError) {
+                      return Center(
+                        child: Text('Error: ${snapshot.error}'),
+                      );
+                    }
+                    return Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+                                  const CircleAvatar(
+                    radius: 50,
+                    backgroundImage: NetworkImage(
+                        "https://t4.ftcdn.net/jpg/05/52/94/89/360_F_552948967_rfWkVCstu3t9ypSnpt2ZePVnuqoi6D6o.jpg"),
+                                  ),
+                                  SizedBox(
+                    height: 10.h,
+                                  ),
+                                   AppText(
+                      text: snapshot.data!['Name'],
+                      weight: FontWeight.w400,
+                      size: 20,
+                      textcolor: customBalck),
+                                  const AppText(
+                      text: "B com",
+                      weight: FontWeight.w400,
+                      size: 17,
+                      textcolor: customBalck)
+                                ]);
+                  }
+                ),
           ),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 10.w),
@@ -87,22 +110,26 @@ class _StudentProgressState extends State<StudentProgress> {
                   const SizedBox(
                     height: 20,
                   ),
-                  CircularPercentIndicator(
-                    radius: 100,
-                    backgroundColor: Colors.grey.shade300,
-                    lineWidth: 30,
-                    //arcBackgroundColor:  Color(0xff50D8D7),
-                    // fillColor: Color(0xff50D8D7),
-                    progressColor: Color(0xff87CEEB),
-                    animation: true,
-                    animationDuration: 2000,
-                    percent: profile_count,
-                    center: Text(
-                      "${profile_count * 100}%",
-                      style: const TextStyle(
-                          fontWeight: FontWeight.bold, fontSize: 20.0),
+                  InkWell(onTap: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => Viewuserprofile(id: widget.id),));
+                  },
+                    child: CircularPercentIndicator(
+                      radius: 100,
+                      backgroundColor: Colors.grey.shade300,
+                      lineWidth: 30,
+                      //arcBackgroundColor:  Color(0xff50D8D7),
+                      // fillColor: Color(0xff50D8D7),
+                      progressColor: Color(0xff87CEEB),
+                      animation: true,
+                      animationDuration: 2000,
+                      percent: profile_count,
+                      center: Text(
+                        "${profile_count * 100}%",
+                        style: const TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 20.0),
+                      ),
+                      circularStrokeCap: CircularStrokeCap.round,
                     ),
-                    circularStrokeCap: CircularStrokeCap.round,
                   ),
                 ]),
               ),

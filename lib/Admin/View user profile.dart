@@ -17,8 +17,8 @@ class _ViewuserprofileState extends State<Viewuserprofile> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.cyan[50],
-        surfaceTintColor: Colors.cyan[50],
+        backgroundColor: Colors.cyan[100],
+        surfaceTintColor: Colors.cyan[100],
         automaticallyImplyLeading: false,
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -35,19 +35,11 @@ class _ViewuserprofileState extends State<Viewuserprofile> {
                   fontWeight: FontWeight.bold,
                   color: Colors.black),
             ),
-            IconButton(
-                onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => StudentProgress(),
-                      ));
-                },
-                icon: Icon(Icons.auto_graph))
+         SizedBox(width: 30.w,)
           ],
         ),
       ),
-      backgroundColor: Colors.cyan[50],
+      backgroundColor: Colors.cyan[100],
 
       //==========================================================================================================
 

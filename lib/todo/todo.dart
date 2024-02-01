@@ -25,12 +25,16 @@ class _AddTodoState extends State<AddTodo> {
     return Scaffold(
       backgroundColor: whiteone,
       appBar: AppBar(
+        backgroundColor: white,
         title: Text("Todo "),
       ),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 20.w),
         child: Column(
           children: [
+            SizedBox(
+              height: 10.h,
+            ),
             const Align(
                 alignment: Alignment.bottomLeft,
                 child: AppText(
@@ -58,7 +62,9 @@ class _AddTodoState extends State<AddTodo> {
                         return Padding(
                           padding: const EdgeInsets.only(top: 10).r,
                           child: ListTile(
-                            title: Text(Data[index]['Title']),
+                            title: Text(
+                              Data[index]['Title'],
+                            ),
                             subtitle: Text(Data[index]['Date']),
                             tileColor: Colors.grey.shade300,
                             trailing: InkWell(
@@ -116,7 +122,7 @@ class _AddTodoState extends State<AddTodo> {
                             hintText: "Select Date",
                             suffixIcon: InkWell(
                                 onTap: () {
-                                  pickDate();
+                                  pickDate(context);
                                 },
                                 child: const Icon(Icons.date_range)),
                             border: const OutlineInputBorder()),
@@ -165,7 +171,7 @@ class _AddTodoState extends State<AddTodo> {
     );
   }
 
-  pickDate() async {
+  pickDate(BuildContext context) async {
     var date = await showDatePicker(
         context: context,
         firstDate: DateTime(2000 - 01 - 01),
@@ -184,6 +190,7 @@ class _AddTodoState extends State<AddTodo> {
       'Title': todotitle.text,
       'Date': dateController.text
     });
+
     todotitle.clear();
     dateController.clear();
   }

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../addQuiz/vewPdf.dart';
 import 'AddNote.dart';
 
 const whiteone = Color(0xfff5f6f9);
@@ -57,11 +58,11 @@ class _NoteListState extends State<NoteList> {
                       padding: const EdgeInsets.all(5.0),
                       child: InkWell(
                         onTap: () {
-                          // Navigator.push(
-                          //     context,
-                          //     MaterialPageRoute(
-                          //       builder: (context) => const QuesView(id: "2"),
-                          //     ));
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => PDFViewer(id:Data[index]['Url'],name:Data[index]['Subject']),
+                              ));
                         },
                         child: Container(
                           height: 100,
@@ -82,10 +83,13 @@ class _NoteListState extends State<NoteList> {
                               SizedBox(
                                   height: double.infinity,
                                   width: 100,
-                                  child: Image.network(
+                                  child:
+                                  //Icon(Icons.picture_as_pdf,color: Colors.red,size: 45,)
+                                  Image.network(
                                     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRi5Nbzy6m48rRyp3I_ATVOdR1kzLlPH7r7OQ&usqp=CAU",
                                     fit: BoxFit.fill,
-                                  )),
+                                  )
+                              ),
                               SizedBox(
                                 height: 100.h,
                                 width: 180.w,

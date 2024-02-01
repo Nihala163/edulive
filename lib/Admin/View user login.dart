@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:edulive/adminProgress/studentProgress.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -16,10 +17,10 @@ class _ViewuserloginState extends State<Viewuserlogin> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.cyan[50],
+      backgroundColor: Colors.cyan[100],
       appBar: AppBar(
-        backgroundColor: Colors.cyan[50],
-        surfaceTintColor: Colors.cyan[50],
+        backgroundColor: Colors.cyan[100],
+        surfaceTintColor: Colors.cyan[100],
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -32,7 +33,7 @@ class _ViewuserloginState extends State<Viewuserlogin> {
                   color: Colors.black),
             ),
             SizedBox(
-              width: 20.w,
+              width: 21.w,
             )
           ],
         ),
@@ -61,7 +62,7 @@ class _ViewuserloginState extends State<Viewuserlogin> {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => Viewuserprofile(id:user[index].id),
+                      builder: (context) => StudentProgress(id:user[index].id),
                     ));
               },
               child: Container(
@@ -74,7 +75,7 @@ class _ViewuserloginState extends State<Viewuserlogin> {
                           offset: const Offset(0.0, 5.0)),
                     ],
                     borderRadius: BorderRadius.circular(10).r,
-                    color: Colors.cyan[100]),
+                    color: Colors.cyan[200]),
                 child: Center(
                   child: ListTile(
                     leading: Image.network(
