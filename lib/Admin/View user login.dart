@@ -21,21 +21,14 @@ class _ViewuserloginState extends State<Viewuserlogin> {
       appBar: AppBar(
         backgroundColor: Colors.cyan[100],
         surfaceTintColor: Colors.cyan[100],
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Icon(Icons.arrow_back_ios),
-            Text(
-              "All Students",
-              style: GoogleFonts.inter(
-                  fontSize: 20.sp,
-                  fontWeight: FontWeight.w500,
-                  color: Colors.black),
-            ),
-            SizedBox(
-              width: 21.w,
-            )
-          ],
+        title: Center(
+          child: Text(
+            "All Students",
+            style: GoogleFonts.inter(
+                fontSize: 20.sp,
+                fontWeight: FontWeight.w500,
+                color: Colors.black),
+          ),
         ),
       ),
       body: FutureBuilder(

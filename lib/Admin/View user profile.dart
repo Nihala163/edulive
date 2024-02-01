@@ -20,23 +20,14 @@ class _ViewuserprofileState extends State<Viewuserprofile> {
         backgroundColor: Colors.cyan[100],
         surfaceTintColor: Colors.cyan[100],
         automaticallyImplyLeading: false,
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            InkWell(
-                onTap: () {
-                  Navigator.pop(context);
-                },
-                child: Icon(Icons.arrow_back_ios)),
-            Text(
-              "Profile",
-              style: GoogleFonts.inter(
-                  fontSize: 20.sp,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black),
-            ),
-         SizedBox(width: 30.w,)
-          ],
+        title: Center(
+          child: Text(
+            "Profile",
+            style: GoogleFonts.inter(
+                fontSize: 20.sp,
+                fontWeight: FontWeight.bold,
+                color: Colors.black),
+          ),
         ),
       ),
       backgroundColor: Colors.cyan[100],
