@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:edulive/feedback_and_rating/reviewClass.dart';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -45,10 +44,10 @@ class _ReviewListState extends State<ReviewList> {
                 itemBuilder: (context, index) {
                   return ReviewUI(
                     image: 'reviewAssets/rOne.jpg',
-                    name: user![index]['dataname'],
-                    date: user![index]['datehello'],
-                    comment: user![index]['feednote'],
-                    rating: user![index]['starvalue'],
+                    name: user[index]['dataname'],
+                    date: user[index]['datehello'],
+                    comment: user[index]['feednote'],
+                    rating: user[index]['starvalue'],
                     onTttap: () {
                       setState(() {
                         isMore = !isMore;

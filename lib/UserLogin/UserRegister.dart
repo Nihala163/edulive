@@ -15,18 +15,23 @@ class Userregister extends StatefulWidget {
 }
 
 class _UserregisterState extends State<Userregister> {
-  // Future<dynamic> sign() async{
-  //   await FirebaseFirestore.instance.collection('User signup').add({
-  //     "Name":name.text,
-  //     "Email":email.text,
-  //     "Phone number":phonenumber.text,
-  //     "Date of birth":_date.text,
-  //     "Address":address.text,
-  //     "College":collegeItems
-  //
-  //
-  //   });
-  // }
+  Future<dynamic> register() async {
+    await FirebaseFirestore.instance.collection('UserRegister').add({
+      "Name": name.text,
+      "Email": email.text,
+      "Phone number": phonenumber.text,
+      "Gender": selectedGender,
+      "College": selectedcollegeValue,
+      "Department": selectedDepartmentValue,
+      "Year": SelectedYear,
+      "Date of birth": _date.text,
+      "Address": address.text,
+      "College": selectedcollegeValue,
+      "Profilestatus": 2.bitLength,
+      "Password": password.text
+    });
+    print("Register sucsess");
+  }
 
   //=======================================================================================================
 
@@ -38,6 +43,7 @@ class _UserregisterState extends State<Userregister> {
   final password = TextEditingController();
   final confirmpass = TextEditingController();
   final address = TextEditingController();
+
   TextEditingController _date = TextEditingController();
 
   bool passToggle = true;
@@ -63,7 +69,9 @@ class _UserregisterState extends State<Userregister> {
     '3 year',
   ];
 
-  String? selectedValue;
+  String? selectedDepartmentValue;
+  String? SelectedYear;
+  String? selectedcollegeValue;
 
   bool _passwordValid = true;
 
@@ -164,6 +172,7 @@ class _UserregisterState extends State<Userregister> {
                               const EdgeInsets.only(left: 30, right: 30, top: 5)
                                   .r,
                           child: TextFormField(
+                            controller: email,
                             obscureText: true,
                             decoration: InputDecoration(
                                 fillColor: Colors.white,
@@ -424,7 +433,7 @@ class _UserregisterState extends State<Userregister> {
                           padding: const EdgeInsets.only(
                               left: 30, right: 30, top: 5),
                           child: SizedBox(
-                            height: 50,
+                            height: 70,
                             child: DropdownButtonFormField2<String>(
                               isExpanded: true,
                               decoration: InputDecoration(
@@ -454,9 +463,11 @@ class _UserregisterState extends State<Userregister> {
                                         ),
                                       ))
                                   .toList(),
-                              onChanged: (value) {},
-                              onSaved: (value) {
-                                selectedValue = value.toString();
+                              onChanged: (value) {
+                                setState(() {
+                                  selectedcollegeValue = value.toString();
+                                  print(selectedcollegeValue);
+                                });
                               },
                               buttonStyleData: const ButtonStyleData(
                                 padding: EdgeInsets.only(right: 8),
@@ -503,7 +514,7 @@ class _UserregisterState extends State<Userregister> {
                           padding: const EdgeInsets.only(
                               left: 30, right: 30, top: 5),
                           child: SizedBox(
-                            height: 50,
+                            height: 70,
                             child: DropdownButtonFormField2<String>(
                               isExpanded: true,
                               decoration: InputDecoration(
@@ -532,9 +543,11 @@ class _UserregisterState extends State<Userregister> {
                                         ),
                                       ))
                                   .toList(),
-                              onChanged: (value) {},
-                              onSaved: (value) {
-                                selectedValue = value.toString();
+                              onChanged: (value) {
+                                setState(() {
+                                  selectedDepartmentValue = value.toString();
+                                  print(selectedDepartmentValue);
+                                });
                               },
                               buttonStyleData: const ButtonStyleData(
                                 padding: EdgeInsets.only(right: 8),
@@ -581,7 +594,7 @@ class _UserregisterState extends State<Userregister> {
                           padding: const EdgeInsets.only(
                               left: 30, right: 30, top: 5),
                           child: SizedBox(
-                            height: 50,
+                            height: 70,
                             child: DropdownButtonFormField2<String>(
                               isExpanded: true,
                               decoration: InputDecoration(
@@ -611,9 +624,11 @@ class _UserregisterState extends State<Userregister> {
                                         ),
                                       ))
                                   .toList(),
-                              onChanged: (value) {},
-                              onSaved: (value) {
-                                selectedValue = value.toString();
+                              onChanged: (value) {
+                                setState(() {
+                                  SelectedYear = value.toString();
+                                  print(SelectedYear);
+                                });
                               },
                               buttonStyleData: const ButtonStyleData(
                                 padding: EdgeInsets.only(right: 8),
@@ -765,24 +780,18 @@ class _UserregisterState extends State<Userregister> {
                           child: InkWell(
                             onTap: () {
                               if (_formfield.currentState!.validate()) {
-                                // Navigator.push(context, MaterialPageRoute(
-                                //   builder: (context) {
-                                //     return Allcourses();
-                                //   },
-                                // ));
-                                name.clear();
-                                password.clear();
-                              }
-
-                              if (selectedGender == null) {
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(
-                                    content: Text('Select Gender'),
-                                  ),
-                                );
-                              } else {
-                                print("select gender");
-                              }
+                                if (selectedGender == null) {
+                                  ScaffoldMessenger.of(context)
+                                      .showSnackBar(const SnackBar(
+                                          content: Text(
+                                    "Please choose your  gender",
+                                    style: TextStyle(color: Colors.red),
+                                  )));
+                                } else {
+                                  register();
+                                }
+                              } else
+                                print("Faild");
                             },
                             child: Container(
                               height: 40.h,

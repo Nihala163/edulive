@@ -17,37 +17,17 @@ class _ViewuserprofileState extends State<Viewuserprofile> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.cyan[50],
-        surfaceTintColor: Colors.cyan[50],
-        automaticallyImplyLeading: false,
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            InkWell(
-                onTap: () {
-                  Navigator.pop(context);
-                },
-                child: Icon(Icons.arrow_back_ios)),
-            Text(
-              "Profile",
-              style: GoogleFonts.inter(
-                  fontSize: 20.sp,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.black),
-            ),
-            IconButton(
-                onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => StudentProgress(),
-                      ));
-                },
-                icon: Icon(Icons.auto_graph))
-          ],
+        backgroundColor: Colors.indigo[300],
+        surfaceTintColor: Colors.indigo[300],
+        title: Text(
+          "Profile",
+          style: GoogleFonts.inter(
+              fontSize: 20.sp,
+              fontWeight: FontWeight.bold,
+              color: Colors.black),
         ),
       ),
-      backgroundColor: Colors.cyan[50],
+      backgroundColor: Colors.indigo[300],
 
       //==========================================================================================================
 
@@ -611,7 +591,7 @@ class _ViewuserprofileState extends State<Viewuserprofile> {
                                     offset: const Offset(0.0, 5.0)),
                               ],
                               borderRadius: BorderRadius.circular(10).r,
-                              color: Colors.cyan),
+                              color: Colors.indigo[900]),
                           child: Center(
                             child: Text(
                               "Back",

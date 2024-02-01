@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -7,6 +8,7 @@ import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:pinput/pinput.dart';
 
 import 'UserRegister.dart';
+import 'UserSighup(2).dart';
 
 class UserLogin extends StatefulWidget {
   const UserLogin({super.key});
@@ -16,6 +18,17 @@ class UserLogin extends StatefulWidget {
 }
 
 class _UserLoginState extends State<UserLogin> {
+  Future<dynamic> PhoneAuthentication() async {
+    await FirebaseAuth.instance.verifyPhoneNumber(
+        verificationCompleted: (PhoneAuthCredential credential) {},
+        verificationFailed: (FirebaseAuthException ex) {},
+        codeSent: (String verificationid, int? resendtoken) {},
+        codeAutoRetrievalTimeout: (String verificationId) {},
+        phoneNumber: phonenum.text.toString());
+  }
+
+  final phonenum = TextEditingController();
+
   final defaultPinTheme = PinTheme(
     width: 50.h,
     height: 50.w,
@@ -31,10 +44,16 @@ class _UserLoginState extends State<UserLogin> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+          leading: IconButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              icon: Icon(Icons.arrow_back_ios))),
       body: SingleChildScrollView(
         child: Column(children: [
           Padding(
-            padding: EdgeInsets.only(top: 80.h),
+            padding: EdgeInsets.only(top: 50.h),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -51,6 +70,7 @@ class _UserLoginState extends State<UserLogin> {
           Padding(
             padding: EdgeInsets.only(top: 50.h, left: 50.w, right: 50.w),
             child: IntlPhoneField(
+              controller: phonenum,
               decoration: InputDecoration(
                 labelText: 'Phone Number',
                 border: OutlineInputBorder(
@@ -70,7 +90,8 @@ class _UserLoginState extends State<UserLogin> {
             child: Align(
                 alignment: Alignment.center,
                 child: Pinput(
-                    length: 5,
+                    keyboardType: TextInputType.number,
+                    length: 4,
                     defaultPinTheme: defaultPinTheme)), // otp field.........
           ),
           Padding(
@@ -80,11 +101,7 @@ class _UserLoginState extends State<UserLogin> {
               children: [
                 InkWell(
                   onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => Userregister(),
-                        ));
+                    print(phonenum.text);
                   },
                   child: InkWell(onTap:() {
                     Userregister();
