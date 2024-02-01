@@ -33,7 +33,7 @@ class _ViewuserloginState extends State<Viewuserlogin> {
                   color: Colors.black),
             ),
             SizedBox(
-              width: 20.w,
+              width: 21.w,
             )
           ],
         ),
