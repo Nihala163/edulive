@@ -31,7 +31,8 @@ class _HelpAndSupportState extends State<HelpAndSupport> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               CircleAvatar(
-                  radius: 50.r, backgroundImage: AssetImage("assets/helpsupport.png")),
+                  radius: 50.r,
+                  backgroundImage: AssetImage("assets/helpsupport.png")),
             ],
           ),
         ),
@@ -43,7 +44,7 @@ class _HelpAndSupportState extends State<HelpAndSupport> {
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
                 border: Border.all(width: 2)),
-            child: Column(children: [
+            child: ListView(children: [
               Padding(
                 padding: EdgeInsets.only(top: 20.h, left: 20),
                 child: Row(
