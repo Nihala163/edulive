@@ -4,9 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../addPdf/adminDash.dart';
-
-
+import '../adminDash.dart';
 
 class Adminlogin extends StatefulWidget {
   const Adminlogin({
@@ -85,6 +83,7 @@ class _AdminloginState extends State<Adminlogin> {
                     SizedBox(
                       width: 290.w,
                       child: TextFormField(
+                          keyboardType: TextInputType.emailAddress,
                           validator: (value) {
                             if (value!.isEmpty) {
                               return 'empty Username';
@@ -101,7 +100,7 @@ class _AdminloginState extends State<Adminlogin> {
                                 borderSide: BorderSide.none,
                                 borderRadius: BorderRadius.circular(10),
                               ),
-                              labelText: "Username",
+                              hintText: "Username",
                               hintStyle: TextStyle(color: Colors.grey))),
                     )
                   ],
@@ -143,7 +142,7 @@ class _AdminloginState extends State<Adminlogin> {
                                 borderSide: BorderSide.none,
                                 borderRadius: BorderRadius.circular(10),
                               ),
-                              labelText: "Password",
+                              hintText: "Password",
                               hintStyle: TextStyle(color: Colors.grey))),
                     )
                   ],
