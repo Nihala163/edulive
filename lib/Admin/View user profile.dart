@@ -17,20 +17,17 @@ class _ViewuserprofileState extends State<Viewuserprofile> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.cyan[100],
-        surfaceTintColor: Colors.cyan[100],
-        automaticallyImplyLeading: false,
-        title: Center(
-          child: Text(
-            "Profile",
-            style: GoogleFonts.inter(
-                fontSize: 20.sp,
-                fontWeight: FontWeight.bold,
-                color: Colors.black),
-          ),
+        backgroundColor: Colors.indigo[300],
+        surfaceTintColor: Colors.indigo[300],
+        title: Text(
+          "Profile",
+          style: GoogleFonts.inter(
+              fontSize: 20.sp,
+              fontWeight: FontWeight.bold,
+              color: Colors.black),
         ),
       ),
-      backgroundColor: Colors.cyan[100],
+      backgroundColor: Colors.indigo[300],
 
       //==========================================================================================================
 
@@ -594,7 +591,7 @@ class _ViewuserprofileState extends State<Viewuserprofile> {
                                     offset: const Offset(0.0, 5.0)),
                               ],
                               borderRadius: BorderRadius.circular(10).r,
-                              color: Colors.cyan),
+                              color: Colors.indigo[900]),
                           child: Center(
                             child: Text(
                               "Back",
