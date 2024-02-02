@@ -8,6 +8,7 @@ import 'Admin/Video list.dart';
 import 'Admin/View user login.dart';
 import 'addPdf/NoteList.dart';
 import 'addQuiz/quizList.dart';
+import 'feedback_and_rating/reviewList.dart';
 
 const whiteone = Color(0xfff5f6f9);
 const customBalck = Color(0xff000000);
@@ -46,7 +47,8 @@ class _AdminDashState extends State<AdminDash> {
     VideoList(),
     QuizList(),
     NoteList(),
-    addbanner()
+    addbanner(),
+    ReviewList()
   ];
 
   @override
