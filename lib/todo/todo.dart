@@ -26,7 +26,11 @@ class _AddTodoState extends State<AddTodo> {
       backgroundColor: whiteone,
       appBar: AppBar(
         backgroundColor: white,
-        title: Text("Todo "),
+        title: AppText(
+            text: "My Todo",
+            weight: FontWeight.w400,
+            size: 25,
+            textcolor: customBalck),
       ),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 20.w),
@@ -35,12 +39,24 @@ class _AddTodoState extends State<AddTodo> {
             SizedBox(
               height: 10.h,
             ),
+            TextFormField(
+              controller: todotitle,
+              decoration: InputDecoration(
+                  contentPadding:
+                      EdgeInsets.symmetric(vertical: 15.h, horizontal: 15.w),
+                  hintText: "Search ",
+                  border: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.grey.shade500))),
+            ),
+            SizedBox(
+              height: 30,
+            ),
             const Align(
                 alignment: Alignment.bottomLeft,
                 child: AppText(
                     text: "All Todos",
-                    weight: FontWeight.w500,
-                    size: 20,
+                    weight: FontWeight.w600,
+                    size: 25,
                     textcolor: customBalck)),
             const SizedBox(
               height: 20,
@@ -62,19 +78,28 @@ class _AddTodoState extends State<AddTodo> {
                         return Padding(
                           padding: const EdgeInsets.only(top: 10).r,
                           child: ListTile(
+                            shape: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10.r),
+                                borderSide:
+                                    BorderSide(color: Colors.transparent)),
                             title: Text(
                               Data[index]['Title'],
                             ),
                             subtitle: Text(Data[index]['Date']),
                             tileColor: Colors.grey.shade300,
-                            trailing: InkWell(
-                                onTap: () {
-                                  Data[index].reference.delete();
-                                },
-                                child: const Icon(
-                                  Icons.delete,
-                                  color: customBalck,
-                                )),
+                            trailing: Container(decoration: BoxDecoration(borderRadius: BorderRadius.circular(10.r),color: Colors.greenAccent,),
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: InkWell(
+                                    onTap: () {
+                                      Data[index].reference.delete();
+                                    },
+                                    child: const Icon(
+                                      Icons.delete,
+                                      color: whiteone,
+                                    )),
+                              ),
+                            ),
                           ),
                         );
                       },
@@ -87,83 +112,7 @@ class _AddTodoState extends State<AddTodo> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          showModalBottomSheet<void>(
-            context: context,
-            builder: (BuildContext context) {
-              return Container(
-                height: 600.h,
-                color: Colors.white,
-                child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 20.w),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    mainAxisSize: MainAxisSize.min,
-                    children: <Widget>[
-                      const AppText(
-                          text: "Add Todo",
-                          weight: FontWeight.w600,
-                          size: 20,
-                          textcolor: customBalck),
-                      SizedBox(
-                        height: 20.h,
-                      ),
-                      TextFormField(
-                        controller: todotitle,
-                        decoration: const InputDecoration(
-                            hintText: "Enter Title",
-                            border: OutlineInputBorder()),
-                      ),
-                      SizedBox(
-                        height: 10.h,
-                      ),
-                      TextFormField(
-                        controller: dateController,
-                        decoration: InputDecoration(
-                            hintText: "Select Date",
-                            suffixIcon: InkWell(
-                                onTap: () {
-                                  pickDate(context);
-                                },
-                                child: const Icon(Icons.date_range)),
-                            border: const OutlineInputBorder()),
-                      ),
-                      SizedBox(
-                        width: 20.w,
-                      ),
-                      SizedBox(
-                        height: 40.h,
-                      ),
-                      Row(
-                        children: [
-                          Expanded(
-                              child: MyButton(
-                                  btnname: "Save",
-                                  btncolor: customBalck,
-                                  click: () {
-                                    addTodo();
-                                  },
-                                  bordercolor: customBalck,
-                                  txtcolor: white)),
-                          SizedBox(
-                            width: 20.w,
-                          ),
-                          Expanded(
-                              child: MyButton(
-                                  btnname: "cancel",
-                                  btncolor: customBalck,
-                                  click: () {
-                                    Navigator.pop(context);
-                                  },
-                                  bordercolor: customBalck,
-                                  txtcolor: white)),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-              );
-            },
-          );
+          _showMyDialog();
         },
         backgroundColor: white,
         child: const Icon(Icons.add),
@@ -180,7 +129,8 @@ class _AddTodoState extends State<AddTodo> {
       setState(() {
         selectdate = date;
       });
-      dateController.text = DateFormat.yMd().format(selectdate!).toString();
+      dateController.text =
+          DateFormat('dd/MM/yy').format(selectdate!).toString();
     }
   }
 
@@ -193,6 +143,69 @@ class _AddTodoState extends State<AddTodo> {
 
     todotitle.clear();
     dateController.clear();
+  }
+
+  Future<void> _showMyDialog() async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false, // user must tap button!
+      builder: (BuildContext context) {
+        return AlertDialog(
+          backgroundColor: white,
+          title: const Text('Add Todo'),
+          content: SingleChildScrollView(
+            child: ListBody(
+              children: <Widget>[
+                TextFormField(
+                  controller: todotitle,
+                  decoration: const InputDecoration(
+                      hintText: "Enter Title", border: OutlineInputBorder()),
+                ),
+                SizedBox(
+                  height: 10.h,
+                ),
+                TextFormField(
+                  readOnly: true,
+                  controller: dateController,
+                  decoration: InputDecoration(
+                      hintText: "Select Date",
+                      suffixIcon: InkWell(
+                          onTap: () {
+                            pickDate(context);
+                          },
+                          child: const Icon(Icons.date_range)),
+                      border: const OutlineInputBorder()),
+                ),
+                SizedBox(
+                  width: 20.w,
+                ),
+              ],
+            ),
+          ),
+          actions: <Widget>[
+            MyButton(
+                btnname: "Save",
+                btncolor: customBalck,
+                click: () {
+                  addTodo();
+                },
+                bordercolor: customBalck,
+                txtcolor: white),
+            SizedBox(
+              height: 10.h,
+            ),
+            MyButton(
+                btnname: "Cancel",
+                btncolor: customBalck,
+                click: () {
+                  Navigator.pop(context);
+                },
+                bordercolor: customBalck,
+                txtcolor: white)
+          ],
+        );
+      },
+    );
   }
 }
 
