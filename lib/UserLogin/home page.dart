@@ -1,5 +1,4 @@
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -18,8 +17,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  var control;
-  var currentindex = 0;
   final List<String> carouselItems = [
     'https://strapi.dhiwise.com/uploads/618fa90c201104b94458e1fb_647ecd43c5092e1c431f22fd_Flutter_App_Development_A_Step_by_Step_Tutorial_With_Dhi_Wise_E2_80_99s_Flutter_Builder_OG_Image_62b760b8fe.jpg',
     'https://www.talentica.com/wp-content/uploads/2021/04/Firebase-blog-feature-image-1.jpg',
@@ -69,19 +66,8 @@ class _HomePageState extends State<HomePage> {
           ),
           ListTile(
             onTap: () {},
-            title: Text("Feed back", style: TextStyle(fontSize: 20)),
-            leading: Icon(Icons.star),
-          ),
-          ListTile(
-            onTap: () {},
-            title: Text("share", style: TextStyle(fontSize: 20)),
-            leading: Icon(Icons.share),
-          ),
-          ListTile(
-            onTap: () {},
-            title: Text("Logout",
-                style: TextStyle(fontSize: 20, color: Colors.red)),
-            leading: Icon(Icons.exit_to_app, color: Colors.red),
+            title: Text("Logout", style: TextStyle(fontSize: 20)),
+            leading: Icon(Icons.exit_to_app),
           )
         ]),
         backgroundColor: Color(0xffCFE2FF),
@@ -91,7 +77,6 @@ class _HomePageState extends State<HomePage> {
           Padding(
             padding: EdgeInsets.only(top: 20.h),
             child: CarouselSlider(
-              carouselController: control,
               items: carouselItems
                   .map((item) => Container(
                         child: Center(
@@ -103,16 +88,6 @@ class _HomePageState extends State<HomePage> {
                 height: 200,
                 autoPlay: true,
               ),
-            ),
-          ),
-          DotsIndicator(
-            dotsCount: carouselItems.length,
-            position: currentindex,
-            decorator: DotsDecorator(
-              size: const Size.square(9.0),
-              activeSize: const Size(18.0, 9.0),
-              activeShape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(5.0)),
             ),
           ),
           //
@@ -157,10 +132,9 @@ class _HomePageState extends State<HomePage> {
                         color: Colors.white,
                         child: Column(
                           children: [
-                            InkWell(
-                              onTap: () {
-                                QuizView();
-                              },
+                            InkWell(onTap: () {
+                              QuizView();
+                            },
                               child: Container(
                                 height: 50,
                                 width: 70,
@@ -182,10 +156,9 @@ class _HomePageState extends State<HomePage> {
                           ],
                         ),
                       ),
-                      InkWell(
-                        onTap: () {
-                          NoteList();
-                        },
+                      InkWell(onTap: () {
+                        NoteList();
+                      },
                         child: Container(
                           padding: const EdgeInsets.all(8),
                           color: Colors.white,
@@ -207,8 +180,7 @@ class _HomePageState extends State<HomePage> {
                                     color: Colors.grey.shade200),
                               ),
                               Text("Material",
-                                  style:
-                                      TextStyle(fontWeight: FontWeight.w600)),
+                                  style: TextStyle(fontWeight: FontWeight.w600)),
                             ],
                           ),
                         ),
@@ -218,10 +190,9 @@ class _HomePageState extends State<HomePage> {
                         color: Colors.white,
                         child: Column(
                           children: [
-                            InkWell(
-                              onTap: () {
-                                VideoList();
-                              },
+                            InkWell(onTap: () {
+                              VideoList();
+                            },
                               child: Container(
                                 height: 50,
                                 width: 70,

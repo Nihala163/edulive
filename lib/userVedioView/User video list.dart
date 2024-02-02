@@ -91,12 +91,13 @@ class _VedioListUserState extends State<VedioListUser> {
             // leading: BackButton(color: Colors.white),
             // title: Text('Vedio List'),
             // titleTextStyle: TextStyle(color: Colors.white, fontSize: 15.sp),
-            backgroundColor: Colors.indigo[900],
+            backgroundColor: Colors.amberAccent,
             centerTitle: true,
             title: CupertinoSearchTextField(
               controller: searchController,
             )),
-        body: resultList.isEmpty
+        body:
+        resultList.isEmpty
             ? Center(
                 child: Lottie.network(
                     'https://lottie.host/08fad6f8-46ea-4771-bcfb-9fc59cb9128a/A0vHdKzMT5.json',
