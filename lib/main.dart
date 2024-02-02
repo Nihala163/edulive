@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
             useMaterial3: true,
           ),
              debugShowCheckedModeBanner:  false,
-          home: HomePage()),
+          home: AdminOrUser()),
       designSize: Size(390, 844),
     );
   }
