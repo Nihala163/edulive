@@ -3,6 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import 'UserLogin/bottom navigaton Dashbord.dart';
 import 'UserLogin/home page.dart';
 import 'firebase_options.dart';
 
@@ -29,7 +30,7 @@ class MyApp extends StatelessWidget {
             useMaterial3: true,
           ),
              debugShowCheckedModeBanner:  false,
-          home: HomePage()),
+          home: DashBoard()),
       designSize: Size(390, 844),
     );
   }

@@ -42,14 +42,16 @@ class _DashBoardState extends State<DashBoard> {
               label: 'Search'),
           BottomNavigationBarItem(
               backgroundColor: Colors.indigo.shade900,
-              icon: InkWell(onTap: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return UserPage();
-                },));
-              },
-                  child:
-              Icon(Icons.forward_to_inbox)),
-              label: "inbox"),
+              icon: InkWell(
+                  onTap: () {
+                    Navigator.push(context, MaterialPageRoute(
+                      builder: (context) {
+                        return UserPage();
+                      },
+                    ));
+                  },
+                  child: Icon(CupertinoIcons.check_mark_circled)),
+              label: "Todo"),
           BottomNavigationBarItem(
               backgroundColor: Colors.indigo.shade900,
               icon: Icon(Icons.person),

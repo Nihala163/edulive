@@ -61,6 +61,9 @@ dependencies:
   syncfusion_flutter_pdfviewer: ^24.2.3
   excel: ^4.0.2
   path_provider: ^2.1.2
+  lottie: ^3.0.0
+  page_transition: ^2.1.0
+  dots_indicator: ^3.0.0
 
 
   # The following adds the Cupertino Icons font to your application.
