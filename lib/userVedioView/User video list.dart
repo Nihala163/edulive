@@ -8,6 +8,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:lottie/lottie.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class VedioListUser extends StatefulWidget {
@@ -72,7 +73,6 @@ class _VedioListUserState extends State<VedioListUser> {
     }
     setState(() {
       resultList = showResult;
-      // user = resultList;
     });
   }
 
@@ -87,6 +87,7 @@ class _VedioListUserState extends State<VedioListUser> {
     return Scaffold(
         backgroundColor: const Color.fromARGB(255, 255, 255, 255),
         appBar: AppBar(
+
             // leading: BackButton(color: Colors.white),
             // title: Text('Vedio List'),
             // titleTextStyle: TextStyle(color: Colors.white, fontSize: 15.sp),
@@ -95,41 +96,49 @@ class _VedioListUserState extends State<VedioListUser> {
             title: CupertinoSearchTextField(
               controller: searchController,
             )),
-        body: ListView.builder(
-          itemCount: resultList.length,
-          itemBuilder: (context, index) {
-            return InkWell(
-              onTap: () {
-                String youtubeLink = resultList[index]['url'];
-                print(youtubeLink);
-                Navigator.push(context, MaterialPageRoute(
-                  builder: (context) {
-                    return VedioplayerUser(vedioId: youtubeLink);
-                  },
-                ));
-              },
-              child: Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 20, vertical: 10).w,
-                child: ListTile(
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10.r)),
-                  tileColor: Colors.indigo[900],
-                  leading: Image.network(
-                    YoutubePlayer.getThumbnail(
-                      videoId: resultList[index]['url'],
+        body: resultList.isEmpty
+            ? Center(
+                child: Lottie.network(
+                    'https://lottie.host/08fad6f8-46ea-4771-bcfb-9fc59cb9128a/A0vHdKzMT5.json',
+                    height: 200.h,
+                    width: 200.w),
+              )
+            : ListView.builder(
+                itemCount: resultList.length,
+                itemBuilder: (context, index) {
+                  return InkWell(
+                    onTap: () {
+                      String youtubeLink = resultList[index]['url'];
+                      print(youtubeLink);
+                      Navigator.push(context, MaterialPageRoute(
+                        builder: (context) {
+                          return VedioplayerUser(vedioId: youtubeLink);
+                        },
+                      ));
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(
+                              horizontal: 20, vertical: 10)
+                          .w,
+                      child: ListTile(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10.r)),
+                        tileColor: Colors.indigo[900],
+                        leading: Image.network(
+                          YoutubePlayer.getThumbnail(
+                            videoId: resultList[index]['url'],
+                          ),
+                          // fit: BoxFit.cover,
+                        ),
+                        title: Text(resultList[index]['course'],
+                            style: TextStyle(color: Colors.white)),
+                        subtitle: Text('More about Courses',
+                            style: TextStyle(color: Colors.white)),
+                      ),
                     ),
-                    // fit: BoxFit.cover,
-                  ),
-                  title: Text(resultList[index]['course'],
-                      style: TextStyle(color: Colors.white)),
-                  subtitle: Text('More about Courses',
-                      style: TextStyle(color: Colors.white)),
-                ),
-              ),
-            );
-          },
-        ));
+                  );
+                },
+              ));
   }
 }
 
