@@ -50,11 +50,10 @@ class _DashBoardState extends State<DashBoard> {
               label: 'Search'),
           BottomNavigationBarItem(
               icon: InkWell(
-                  onTap: () {},
                   child: Icon(
-                    CupertinoIcons.check_mark_circled,
-                    color: Colors.black,
-                  )),
+                CupertinoIcons.check_mark_circled,
+                color: Colors.black,
+              )),
               label: "Todo"),
           BottomNavigationBarItem(
               icon: Icon(Icons.person_2_outlined, color: Colors.black),
