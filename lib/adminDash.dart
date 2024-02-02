@@ -1,4 +1,5 @@
 import 'package:edulive/Notification/Notification%20Admin.dart';
+import 'package:edulive/feedback_and_rating/reviewList.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -46,7 +47,8 @@ class _AdminDashState extends State<AdminDash> {
     VideoList(),
     QuizList(),
     NoteList(),
-    addbanner()
+    addbanner(),
+    ReviewList(),
   ];
 
   @override

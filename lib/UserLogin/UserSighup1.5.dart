@@ -14,8 +14,10 @@ import 'UserSighup(2).dart';
 
 class Sighup15 extends StatefulWidget {
   final String verificationId;
+  final TextEditingController phone;
 
-  const Sighup15({Key? key, required this.verificationId}) : super(key: key);
+  const Sighup15({Key? key, required this.verificationId, required this.phone})
+      : super(key: key);
 
   @override
   State<Sighup15> createState() => _Sighup15State();
@@ -71,13 +73,12 @@ class _Sighup15State extends State<Sighup15> with CodeAutoFill {
 
       FirebaseFirestore.instance
           .collection("UserSignup")
-          .add({"PhoneNumber": otpController}).then(
+          .add({"PhoneNumber": widget.phone.text}).then(
               (value) => Navigator.pushReplacement(context, MaterialPageRoute(
                     builder: (context) {
                       return UserSignup();
                     },
                   )));
-
       // Navigator.pushReplacement(
       //   context,
       //   MaterialPageRoute(

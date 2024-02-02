@@ -85,15 +85,13 @@ class _VedioListUserState extends State<VedioListUser> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
-        backgroundColor: Colors.cyan[100],
+        backgroundColor: const Color.fromARGB(255, 255, 255, 255),
         appBar: AppBar(
 
             // leading: BackButton(color: Colors.white),
             // title: Text('Vedio List'),
             // titleTextStyle: TextStyle(color: Colors.white, fontSize: 15.sp),
-            backgroundColor: Colors.cyan[100],
-            surfaceTintColor: Colors.cyan[100],
+            backgroundColor: Colors.indigo[900],
             centerTitle: true,
             title: CupertinoSearchTextField(
               controller: searchController,
@@ -122,31 +120,20 @@ class _VedioListUserState extends State<VedioListUser> {
                       padding: const EdgeInsets.symmetric(
                               horizontal: 20, vertical: 10)
                           .w,
-                      child: Container(
-                        decoration: BoxDecoration(
-                            boxShadow: [
-                              BoxShadow(
-                                  color: Colors.black.withOpacity(0.3),
-                                  blurRadius: 5.0,
-                                  offset: const Offset(0.0, 5.0)),
-                            ],
-                            borderRadius: BorderRadius.circular(10).r,
-                            color: Colors.cyan[300]),
-                        child: ListTile(
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10.r)),
-                          tileColor: Colors.indigo[900],
-                          leading: Image.network(
-                            YoutubePlayer.getThumbnail(
-                              videoId: resultList[index]['url'],
-                            ),
-                            // fit: BoxFit.cover,
+                      child: ListTile(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10.r)),
+                        tileColor: Colors.indigo[900],
+                        leading: Image.network(
+                          YoutubePlayer.getThumbnail(
+                            videoId: resultList[index]['url'],
                           ),
-                          title: Text(resultList[index]['course'],
-                              style: TextStyle(color: Colors.white)),
-                          subtitle: Text('More about Courses',
-                              style: TextStyle(color: Colors.white)),
+                          // fit: BoxFit.cover,
                         ),
+                        title: Text(resultList[index]['course'],
+                            style: TextStyle(color: Colors.white)),
+                        subtitle: Text('More about Courses',
+                            style: TextStyle(color: Colors.white)),
                       ),
                     ),
                   );

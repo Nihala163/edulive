@@ -107,12 +107,12 @@ class _NewpassState extends State<Newpass> {
                           ]),
                       child: Center(
                           child: Text(
-                            "Confirm",
-                            style: GoogleFonts.poppins(
-                                fontSize: 15.sp,
-                                fontWeight: FontWeight.w600,
-                                color: Colors.white),
-                          )),
+                        "Confirm",
+                        style: GoogleFonts.poppins(
+                            fontSize: 15.sp,
+                            fontWeight: FontWeight.w600,
+                            color: Colors.white),
+                      )),
                     ),
                   )
                 ],

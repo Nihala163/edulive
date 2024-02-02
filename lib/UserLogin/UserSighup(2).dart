@@ -8,11 +8,16 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 
 class UserSignup extends StatefulWidget {
-  const UserSignup({super.key});
+
+ const  UserSignup({super.key,});
 
   @override
   State<UserSignup> createState() => _UserSignupState();
 }
+
+// Future<dynamic> getid() async {
+//   var Getdata = FirebaseFirestore.instance.collection("UserSignup").get();
+// }
 
 class _UserSignupState extends State<UserSignup> {
   Future<dynamic> register() async {
@@ -20,7 +25,8 @@ class _UserSignupState extends State<UserSignup> {
       "Name": name.text,
       "Email": email.text,
       "Profilestatus": 2.bitLength,
-      "Password": password.text
+      "Password": password.text,
+      "Status": 0
     });
     print("Register sucsess");
   }
