@@ -18,12 +18,14 @@ class _UserPageState extends State<UserPage> {
     FirebaseMessaging.onMessage.listen((RemoteMessage message) {
       print("onMessage: $message");
 
-      String title = message.notification?.title ?? message.data['title'] ?? 'Default Title';
-      String body = message.notification?.body ?? message.data['body'] ?? 'Default Body';
+      String title = message.notification?.title ??
+          message.data['title'] ??
+          'Default Title';
+      String body =
+          message.notification?.body ?? message.data['body'] ?? 'Default Body';
 
       _showNotification(title, body);
     });
-
 
     FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
       print("onResume: $message");
@@ -35,7 +37,8 @@ class _UserPageState extends State<UserPage> {
     _firebaseMessaging.subscribeToTopic('user_topic');
   }
 
-  static Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+  static Future<void> _firebaseMessagingBackgroundHandler(
+      RemoteMessage message) async {
     print("Handling a background message: ${message.messageId}");
   }
 
@@ -59,6 +62,12 @@ class _UserPageState extends State<UserPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+            icon: Icon(Icons.arrow_back_ios)),
+        centerTitle: true,
         title: Text('User Page'),
       ),
       body: Center(
