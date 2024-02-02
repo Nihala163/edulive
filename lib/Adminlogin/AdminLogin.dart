@@ -3,9 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-
-
-
 class Adminlogin extends StatefulWidget {
   const Adminlogin({
     super.key,
@@ -89,6 +86,7 @@ class _AdminloginState extends State<Adminlogin> {
                             }
                           },
                           controller: Name,
+                          keyboardType: TextInputType.emailAddress,
                           decoration: InputDecoration(
                               contentPadding:
                                   EdgeInsets.symmetric(vertical: 10),
@@ -99,7 +97,7 @@ class _AdminloginState extends State<Adminlogin> {
                                 borderSide: BorderSide.none,
                                 borderRadius: BorderRadius.circular(10),
                               ),
-                              labelText: "Username",
+                              hintText: "Username",
                               hintStyle: TextStyle(color: Colors.grey))),
                     )
                   ],
@@ -141,7 +139,7 @@ class _AdminloginState extends State<Adminlogin> {
                                 borderSide: BorderSide.none,
                                 borderRadius: BorderRadius.circular(10),
                               ),
-                              labelText: "Password",
+                              hintText: "Password",
                               hintStyle: TextStyle(color: Colors.grey))),
                     )
                   ],
