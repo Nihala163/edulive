@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../feedback_and_rating/scoreboard.dart';
 import 'ProgressTab.dart';
 
 class Profilepage extends StatefulWidget {
@@ -138,7 +139,7 @@ class _ProfilepageState extends State<Profilepage> {
                   ),
                 ),
                 Expanded(
-                  child: TabBarView(children: [ProfileTab(), Progreetab()]),
+                  child: TabBarView(children: [ProfileTab(), ProgressGoOne()]),
                 )
               ],
             ),

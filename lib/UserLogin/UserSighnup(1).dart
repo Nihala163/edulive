@@ -10,6 +10,7 @@ import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:pinput/pinput.dart';
 import 'package:sms_autofill/sms_autofill.dart';
 
+import '../LoginDemo.dart';
 import 'UserRegister.dart';
 import 'UserSighup(2).dart';
 import 'UserSighup1.5.dart';
@@ -85,6 +86,7 @@ class _UserLoginState extends State<UserLogin> {
             context,
             MaterialPageRoute(
                 builder: (context) => Sighup15(
+                  phone: phoneController,
                       verificationId: verificationId,
                     )),
           );
