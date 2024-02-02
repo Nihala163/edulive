@@ -101,7 +101,19 @@ class _NoteListState extends State<NoteList> {
                                           textcolor: customBalck),
                                     ),
                                   ),
+                                  Expanded(
+                                      child: SizedBox(
+                                        child: Center(
+                                            child: IconButton(
+                                                onPressed: () {
+                                                  setState(() {
+                                                    deleteFileByUrl(Data[index]['Url']);
 
+                                                    Data[index].reference.delete();
+                                                  });
+                                                },
+                                                icon: const Icon(Icons.delete))),
+                                      ))
                                 ]),
                               ),
                             ),
@@ -113,7 +125,17 @@ class _NoteListState extends State<NoteList> {
               })
         ]),
       ),
-
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.white,
+        onPressed: () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => AddNotes(),
+              ));
+        },
+        child: const Icon(Icons.add),
+      ),
     );
   }
 }
