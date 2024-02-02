@@ -4,7 +4,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../Admin/Video list.dart';
-import '../Notification/Notification User.dart';
 import '../Quiz/quizViewuser.dart';
 import '../Settings/Settings.dart';
 import '../addPdf/NoteList.dart';
@@ -30,15 +29,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         actions: [
-          IconButton(
-              onPressed: () {
-                Navigator.pushReplacement(context, MaterialPageRoute(
-                  builder: (context) {
-                    return UserPage();
-                  },
-                ));
-              },
-              icon: Icon(Icons.notifications_active))
+          IconButton(onPressed: () {}, icon: Icon(Icons.notifications_active))
         ],
         iconTheme: IconThemeData(color: Colors.white),
         title: Text(
@@ -83,10 +74,8 @@ class _HomePageState extends State<HomePage> {
       ),
       body: ListView(
         children: [
-          Container(
-            color: Colors.white,
-            height: 250,
-            width: 100,
+          Padding(
+            padding: EdgeInsets.only(top: 20.h),
             child: CarouselSlider(
               items: carouselItems
                   .map((item) => Container(
@@ -143,10 +132,9 @@ class _HomePageState extends State<HomePage> {
                         color: Colors.white,
                         child: Column(
                           children: [
-                            InkWell(
-                              onTap: () {
-                                QuizView();
-                              },
+                            InkWell(onTap: () {
+                              QuizView();
+                            },
                               child: Container(
                                 height: 50,
                                 width: 70,
@@ -168,10 +156,9 @@ class _HomePageState extends State<HomePage> {
                           ],
                         ),
                       ),
-                      InkWell(
-                        onTap: () {
-                          NoteList();
-                        },
+                      InkWell(onTap: () {
+                        NoteList();
+                      },
                         child: Container(
                           padding: const EdgeInsets.all(8),
                           color: Colors.white,
@@ -193,8 +180,7 @@ class _HomePageState extends State<HomePage> {
                                     color: Colors.grey.shade200),
                               ),
                               Text("Material",
-                                  style:
-                                      TextStyle(fontWeight: FontWeight.w600)),
+                                  style: TextStyle(fontWeight: FontWeight.w600)),
                             ],
                           ),
                         ),
@@ -204,10 +190,9 @@ class _HomePageState extends State<HomePage> {
                         color: Colors.white,
                         child: Column(
                           children: [
-                            InkWell(
-                              onTap: () {
-                                VideoList();
-                              },
+                            InkWell(onTap: () {
+                              VideoList();
+                            },
                               child: Container(
                                 height: 50,
                                 width: 70,
