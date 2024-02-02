@@ -22,38 +22,43 @@ class _VedioplayerUserState extends State<VedioplayerUser> {
       // backgroundColor: Colors.indigo,
       appBar: AppBar(
         leading: BackButton(color: Colors.white),
-        backgroundColor: Colors.indigo.shade900,
-        title: Text('Vedio Player'),
-        titleTextStyle: TextStyle(color: Colors.white),
+        backgroundColor: Colors.amberAccent,
+        title: Text('Video Player',style: TextStyle(color: Colors.black)),
+
       ),
       body: ListView(children: [
         SizedBox(
           height: 10.h,
         ),
-        YoutubePlayer(
-          bottomActions: [
-            CurrentPosition(),
-            ProgressBar(isExpanded: true),
+        Padding(
+          padding: const EdgeInsets.only(right:10,left:10,top: 50),
+          child: Container(decoration: BoxDecoration(borderRadius: BorderRadius.circular(10)),
+            child: YoutubePlayer(
+              bottomActions: [
+                CurrentPosition(),
+                ProgressBar(isExpanded: true),
 
-            // TotalDuration(),
-          ],
-          controller: YoutubePlayerController(
-            initialVideoId: widget.vedioId,
-            flags: YoutubePlayerFlags(
-                autoPlay: false,
-                mute: false,
-                disableDragSeek: false,
-                showLiveFullscreenButton: true,
-                // useHybridComposition: true,
-                loop: false,
-                isLive: false,
-                forceHD: false,
-                enableCaption: true,
-                controlsVisibleAtStart: true,
-                hideThumbnail: false),
+                // TotalDuration(),
+              ],
+              controller: YoutubePlayerController(
+                initialVideoId: widget.vedioId,
+                flags: YoutubePlayerFlags(
+                    autoPlay: false,
+                    mute: false,
+                    disableDragSeek: false,
+                    showLiveFullscreenButton: true,
+                    // useHybridComposition: true,
+                    loop: false,
+                    isLive: false,
+                    forceHD: false,
+                    enableCaption: true,
+                    controlsVisibleAtStart: true,
+                    hideThumbnail: false),
+              ),
+              showVideoProgressIndicator: true,
+              progressIndicatorColor: Colors.blueAccent,
+            ),
           ),
-          showVideoProgressIndicator: true,
-          progressIndicatorColor: Colors.blueAccent,
         ),
       ]),
     );

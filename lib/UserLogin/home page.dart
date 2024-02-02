@@ -1,4 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:edulive/User%20note%20list/User%20note%20list.dart';
+import 'package:edulive/userVedioView/User%20video%20list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -133,7 +135,9 @@ class _HomePageState extends State<HomePage> {
                         child: Column(
                           children: [
                             InkWell(onTap: () {
-                              QuizView();
+                              Navigator.push(context, MaterialPageRoute(builder: (context) {
+                                return QuizView();
+                              },));
                             },
                               child: Container(
                                 height: 50,
@@ -157,7 +161,9 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ),
                       InkWell(onTap: () {
-                        NoteList();
+                        Navigator.push(context, MaterialPageRoute(builder: (context) {
+                          return Usernotelist();
+                        },));
                       },
                         child: Container(
                           padding: const EdgeInsets.all(8),
@@ -190,8 +196,10 @@ class _HomePageState extends State<HomePage> {
                         color: Colors.white,
                         child: Column(
                           children: [
-                            InkWell(onTap: () {
-                              VideoList();
+                            InkWell(onTap: () {Navigator.push(context, MaterialPageRoute(builder: (context) {
+                              return VedioListUser();
+                            },));
+
                             },
                               child: Container(
                                 height: 50,
