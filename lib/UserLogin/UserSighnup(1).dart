@@ -8,6 +8,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:pinput/pinput.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sms_autofill/sms_autofill.dart';
 
 import '../LoginDemo.dart';
@@ -25,6 +26,19 @@ class UserLogin extends StatefulWidget {
 class _UserLoginState extends State<UserLogin> {
   final TextEditingController phoneController = TextEditingController();
   FirebaseAuth auth = FirebaseAuth.instance;
+  //
+  //
+  Future<void> getData() async {
+    SharedPreferences spref = await SharedPreferences.getInstance();
+    String mobile = '';
+    mobile = phoneController.text;
+    setState(() {
+      spref.setString("num", mobile as String);
+      print("mobile............$mobile");
+    });
+    print("Updated");
+  }
+
   void initState() {
     super.initState();
     _listenSmsCode();
@@ -81,12 +95,12 @@ class _UserLoginState extends State<UserLogin> {
             backgroundColor: Colors.green,
             textColor: Colors.white,
           );
+          getData();
 
           Navigator.push(
             context,
             MaterialPageRoute(
                 builder: (context) => Sighup15(
-                  phone: phoneController,
                       verificationId: verificationId,
                     )),
           );
@@ -169,6 +183,7 @@ class _UserLoginState extends State<UserLogin> {
                 InkWell(
                   onTap: () {
                     otpNumber();
+                    getData();
                   },
                   child: Container(
                     height: 50.h,
