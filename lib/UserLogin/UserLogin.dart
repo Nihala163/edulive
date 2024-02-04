@@ -32,17 +32,17 @@ class _UserLogin1State extends State<UserLogin1> {
         .get();
     print("inside");
     if (user.docs.isNotEmpty) {
-      id = user.docs[0].id;
+      // id = user.docs[0].id;
       name = user.docs[0]['Email'];
       email = user.docs[0]['Name'];
       phone = user.docs[0]['Mobile'];
-      path = user.docs[0]['Profilepath'];
+      // path = user.docs[0]['Profilepath'];
       SharedPreferences data = await SharedPreferences.getInstance();
-      data.setString('id', id);
+      // data.setString('id', id);
       data.setString('name', name);
       data.setString('email', email);
       data.setString('phone', phone);
-      data.setString('paath', path);
+      // data.setString('paath', path);
 
       print("logined");
 
@@ -54,11 +54,12 @@ class _UserLogin1State extends State<UserLogin1> {
     } else {
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
           content: Text(
-            "username and password error",
-            style: TextStyle(color: Colors.red),
-          )));
+        "username and password error",
+        style: TextStyle(color: Colors.red),
+      )));
     }
   }
+
   final _formfield = GlobalKey<FormState>();
 
   final password = TextEditingController();
@@ -300,6 +301,4 @@ class _UserLogin1State extends State<UserLogin1> {
           ],
         ));
   }
-
-
 }
