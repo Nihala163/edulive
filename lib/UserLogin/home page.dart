@@ -2,12 +2,10 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
-
 import '../Admin/Video list.dart';
 import '../Quiz/quizViewuser.dart';
 import '../Settings/Settings.dart';
 import '../addPdf/NoteList.dart';
-import '../profile/Profile.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);

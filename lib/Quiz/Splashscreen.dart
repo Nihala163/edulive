@@ -1,7 +1,7 @@
 import 'package:edulive/Quiz/quizViewuser.dart';
-import 'package:page_transition/page_transition.dart';
 
 import 'package:flutter/material.dart';
+import 'package:page_transition/page_transition.dart';
 
 class Splash extends StatefulWidget {
   const Splash({super.key});

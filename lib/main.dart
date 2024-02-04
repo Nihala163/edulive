@@ -1,9 +1,8 @@
-import 'package:edulive/UserLogin/AdminOrUser.dart';
+import 'package:edulive/Quiz/Splashscreen.dart';
+import 'package:edulive/Splash%20screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-import 'UserLogin/bottom navigaton Dashbord.dart';
 import 'UserLogin/home page.dart';
 import 'firebase_options.dart';
 
@@ -16,7 +15,6 @@ Future<void> main() async {
 }
 
 class MyApp extends StatelessWidget {
-
   const MyApp({super.key});
 
   // This widget is the root of your application.
@@ -29,8 +27,7 @@ class MyApp extends StatelessWidget {
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
             useMaterial3: true,
           ),
-             debugShowCheckedModeBanner:  false,
-          home: DashBoard()),
+          home: Splash_Screen()),
       designSize: Size(390, 844),
     );
   }
