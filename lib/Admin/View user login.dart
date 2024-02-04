@@ -13,27 +13,45 @@ class Viewuserlogin extends StatefulWidget {
 }
 
 class _ViewuserloginState extends State<Viewuserlogin> {
+
+  bool startAnimation = false;
+
+
+  @override
+  void initState() {
+    super.initState();
+
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      setState(() {
+        startAnimation = true;
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.indigo[400],
+      backgroundColor: Colors.cyan[50],
       appBar: AppBar(
-        backgroundColor: Colors.indigo[400],
-        surfaceTintColor: Colors.cyan[400],
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-
-            Text(
-              "All Students",
-              style: GoogleFonts.inter(
-                  fontSize: 20.sp,
-                  fontWeight: FontWeight.w500,
-                  color: Colors.white),
+        backgroundColor: Colors.cyan[50],
+        surfaceTintColor: Colors.cyan[50],
+        title:GestureDetector(
+          onTap: () {
+            // Future.delayed(const Duration(milliseconds: 500), () {
+            //   setState(() {
+            //     startAnimation = true;
+            //   });
+            // });
+          },
+          child: const Text(
+            "All Students",
+            style: TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.w600,
+              color: Colors.black,
             ),
-
-          ],
-        ),
+          ),
+        )
       ),
       body: FutureBuilder(
         future: FirebaseFirestore.instance.collection("UserRegister").get(),
@@ -51,6 +69,8 @@ class _ViewuserloginState extends State<Viewuserlogin> {
       final user = snapshot.data?.docs ?? [];
 
       return ListView.builder(
+        primary: false,
+        shrinkWrap: true,
         itemBuilder: (context, index) {
           return Padding(
             padding: const EdgeInsets.only(left: 20, right: 20, top: 15).r,
@@ -72,7 +92,7 @@ class _ViewuserloginState extends State<Viewuserlogin> {
                           offset: const Offset(0.0, 5.0)),
                     ],
                     borderRadius: BorderRadius.circular(10).r,
-                    color: Colors.indigo[900]),
+                    color: Colors.cyan[100]),
                 child: Center(
                   child: ListTile(
                     leading: Image.network(
@@ -82,14 +102,14 @@ class _ViewuserloginState extends State<Viewuserlogin> {
                       style: GoogleFonts.inter(
                           fontSize: 18.sp,
                           fontWeight: FontWeight.w400,
-                          color: Colors.white),
+                          color: Colors.black),
                     ),
                     subtitle: Text(
                        user[index]['Department'],
                       style: GoogleFonts.inter(
                           fontSize: 12.sp,
                           fontWeight: FontWeight.w400,
-                          color: Colors.white),
+                          color: Colors.black),
                     ),
                   ),
                 ),
@@ -102,4 +122,7 @@ class _ViewuserloginState extends State<Viewuserlogin> {
     } ),
     );
   }
+
+
+
 }
