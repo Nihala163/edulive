@@ -7,6 +7,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sms_autofill/sms_autofill.dart';
 import 'UserSighup1.5.dart';
 
@@ -18,6 +19,19 @@ class UserLogin extends StatefulWidget {
 }
 
 class _UserLoginState extends State<UserLogin> {
+  //
+  Future<void> getData() async {
+    SharedPreferences spref = await SharedPreferences.getInstance();
+    String mobile = '';
+    mobile = phoneController.text;
+    setState(() {
+      spref.setString("num", mobile as String);
+      print("mobile............$mobile");
+    });
+    print("Updated");
+  }
+
+  //
   final TextEditingController phoneController = TextEditingController();
   FirebaseAuth auth = FirebaseAuth.instance;
   void initState() {
@@ -76,7 +90,6 @@ class _UserLoginState extends State<UserLogin> {
             backgroundColor: Colors.green,
             textColor: Colors.white,
           );
-
           Navigator.push(
             context,
             MaterialPageRoute(
@@ -162,6 +175,7 @@ class _UserLoginState extends State<UserLogin> {
               children: [
                 InkWell(
                   onTap: () {
+                    getData();
                     otpNumber();
                   },
                   child: Container(

@@ -24,25 +24,23 @@ class _UserSignupState extends State<UserSignup> {
 
   var Name;
   var Mobile;
-  var Pass;
+
   var Email;
 
   Future<void> setData() async {
     SharedPreferences spref = await SharedPreferences.getInstance();
     Name = name.text;
     Mobile = mob.simplifyText();
-    Pass = password.toString();
+
     Email = email.toString();
 
     setState(() {
-      spref.setString("Name", Name);
-      spref.setString("Number", Mobile);
-      spref.setString("Passsword", Pass);
-      spref.setString("Email", Email);
+      spref.setString("name", Name);
+      spref.setString("phone", Mobile);
+      spref.setString("email", Email.toString());
 
       print("sharepfr:$Name");
       print("shareprf:$Mobile");
-      print("Shareprf:$Pass");
       print("Shareprf$Email");
     });
     print("Updated");
