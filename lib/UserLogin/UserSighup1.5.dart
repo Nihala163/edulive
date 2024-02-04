@@ -8,6 +8,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pinput/pinput.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:sms_autofill/sms_autofill.dart';
 
 import 'UserSighup(2).dart';
@@ -15,7 +16,10 @@ import 'UserSighup(2).dart';
 class Sighup15 extends StatefulWidget {
   final String verificationId;
 
-  const Sighup15({Key? key, required this.verificationId}) : super(key: key);
+  Sighup15({
+    Key? key,
+    required this.verificationId,
+  }) : super(key: key);
 
   @override
   State<Sighup15> createState() => _Sighup15State();
@@ -69,21 +73,20 @@ class _Sighup15State extends State<Sighup15> with CodeAutoFill {
 
       await FirebaseAuth.instance.signInWithCredential(credential);
 
-      FirebaseFirestore.instance
-          .collection("UserSignup")
-          .add({"PhoneNumber": otpController}).then(
-              (value) => Navigator.pushReplacement(context, MaterialPageRoute(
-                    builder: (context) {
-                      return UserSignup();
-                    },
-                  )));
-
-      // Navigator.pushReplacement(
-      //   context,
-      //   MaterialPageRoute(
-      //     builder: (context) => UserSignup(id: [index].id),
-      //   ),
-      // );
+      // FirebaseFirestore.instance
+      //     .collection("UserSignup")
+      //     .add({"PhoneNumber": widget.phone.text}).then(
+      //         (value) => Navigator.pushReplacement(context, MaterialPageRoute(
+      //               builder: (context) {
+      //                 return UserSignup();
+      //               },
+      //             )));
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (context) => UserSignup(),
+        ),
+      );
     } catch (e) {
       if (kDebugMode) {
         print("Error during OTP validation: $e");

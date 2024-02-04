@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../adminDash.dart';
+
 class Adminlogin extends StatefulWidget {
   const Adminlogin({
     super.key,
@@ -154,9 +156,12 @@ class _AdminloginState extends State<Adminlogin> {
                         height: 50.h,
                         child: TextButton(
                             onPressed: () {
-                              if (formkey.currentState!.validate()) {
-                                login();
-                              }
+                              Navigator.push(context, MaterialPageRoute(builder: (context) {
+                              return  AdminDash();
+                            },));
+                              // if (formkey.currentState!.validate()) {
+                              //   AdminDash();
+                              // }
                             },
                             child: Text(
                               "LOGIN",

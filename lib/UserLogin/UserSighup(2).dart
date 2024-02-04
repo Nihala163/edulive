@@ -6,23 +6,45 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class UserSignup extends StatefulWidget {
-  const UserSignup({super.key});
+  UserSignup({super.key});
 
   @override
   State<UserSignup> createState() => _UserSignupState();
 }
 
 class _UserSignupState extends State<UserSignup> {
+  var mob = '';
+  void initState() {
+    getData();
+  }
+
+  //
+  //
+  Future<void> getData() async {
+    SharedPreferences spref = await SharedPreferences.getInstance();
+    setState(() {
+      mob = spref.getString("num")!;
+      spref.setString("id", mob);
+    });
+    //
+
+    print("Updated");
+  }
+
   Future<dynamic> register() async {
-    await FirebaseFirestore.instance.collection('UserSignup').doc().update({
+    print("Sign");
+    await FirebaseFirestore.instance.collection('UserSignup').add({
+      "Mobile": mob,
       "Name": name.text,
       "Email": email.text,
       "Profilestatus": 2.bitLength,
-      "Password": password.text
+      "Password": password.text,
+      "Status": 0
     });
-    print("Register sucsess");
+    print("...................signup sucsess");
   }
 
   final _formfield = GlobalKey<FormState>();
@@ -297,6 +319,7 @@ class _UserSignupState extends State<UserSignup> {
                           child: InkWell(
                             onTap: () {
                               if (_formfield.currentState!.validate()) {
+                                register();
                                 print("Faild");
                               }
                             },

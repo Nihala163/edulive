@@ -3,6 +3,7 @@ import 'package:edulive/profile/Profile.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../todo/todo.dart';
 import 'home page.dart';
 
 class DashBoard extends StatefulWidget {
@@ -18,13 +19,18 @@ class _DashBoardState extends State<DashBoard> {
   final List<Widget> _pages = [
     HomePage(),
     Center(child: Text("Add Search page")),
-    Center(child: Text("Add Notification page")),
+    AddTodo(),
     Profilepage()
   ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
+        selectedLabelStyle: TextStyle(fontWeight: FontWeight.w600),
+        iconSize: 30,
+        fixedColor: Colors.indigo.shade900,
+        elevation: 100,
+        mouseCursor: MaterialStateMouseCursor.textable,
         currentIndex: _selectedIndex,
         onTap: (index) {
           setState(() {
@@ -33,26 +39,24 @@ class _DashBoardState extends State<DashBoard> {
         },
         items: [
           BottomNavigationBarItem(
-              backgroundColor: Colors.indigo.shade900,
-              icon: Icon(Icons.home),
-              label: 'Home'),
+            icon: Icon(Icons.home_outlined, color: Colors.black),
+            label: 'Home',
+          ),
           BottomNavigationBarItem(
-              backgroundColor: Colors.indigo.shade900,
-              icon: Icon(Icons.search),
+              icon: Icon(
+                Icons.search,
+                color: Colors.black,
+              ),
               label: 'Search'),
           BottomNavigationBarItem(
-              backgroundColor: Colors.indigo.shade900,
-              icon: InkWell(onTap: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return UserPage();
-                },));
-              },
-                  child:
-              Icon(Icons.forward_to_inbox)),
-              label: "inbox"),
+              icon: InkWell(
+                  child: Icon(
+                CupertinoIcons.check_mark_circled,
+                color: Colors.black,
+              )),
+              label: "Todo"),
           BottomNavigationBarItem(
-              backgroundColor: Colors.indigo.shade900,
-              icon: Icon(Icons.person),
+              icon: Icon(Icons.person_2_outlined, color: Colors.black),
               label: 'Profile'),
         ],
       ),

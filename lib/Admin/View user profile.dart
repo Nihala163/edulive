@@ -17,8 +17,8 @@ class _ViewuserprofileState extends State<Viewuserprofile> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.indigo[300],
-        surfaceTintColor: Colors.indigo[300],
+        backgroundColor: Colors.cyan[200],
+        surfaceTintColor: Colors.cyan[200],
         title: Text(
           "Profile",
           style: GoogleFonts.inter(
@@ -27,7 +27,7 @@ class _ViewuserprofileState extends State<Viewuserprofile> {
               color: Colors.black),
         ),
       ),
-      backgroundColor: Colors.indigo[300],
+      backgroundColor: Colors.cyan[200],
 
       //==========================================================================================================
 
