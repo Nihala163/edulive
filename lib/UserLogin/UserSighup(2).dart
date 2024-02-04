@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:excel/excel.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
@@ -7,6 +8,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import 'bottom navigaton Dashbord.dart';
 
 class UserSignup extends StatefulWidget {
   UserSignup({super.key});
@@ -19,6 +22,32 @@ class _UserSignupState extends State<UserSignup> {
   var mob = '';
   void initState() {
     getData();
+  }
+
+  var Name;
+  var Mobile;
+  var Pass;
+  var Email;
+
+  Future<void> setData() async {
+    SharedPreferences spref = await SharedPreferences.getInstance();
+    Name = name.text;
+    Mobile = mob.simplifyText();
+    Pass = password.toString();
+    Email = email.toString();
+
+    setState(() {
+      spref.setString("Name", Name);
+      spref.setString("Number", Mobile);
+      spref.setString("Passsword", Pass);
+      spref.setString("Email", Email);
+
+      print("sharepfr:$Name");
+      print("shareprf:$Mobile");
+      print("Shareprf:$Pass");
+      print("Shareprf$Email");
+    });
+    print("Updated");
   }
 
   //
@@ -42,8 +71,14 @@ class _UserSignupState extends State<UserSignup> {
       "Email": email.text,
       "Profilestatus": 2.bitLength,
       "Password": password.text,
-      "Status": 0
-    });
+      "Status": 0,
+      "Profilepath":
+          "https://img.freepik.com/free-vector/male-businessman-character-sitting-office-workplace-computer-monitor-desk_80328-218.jpg"
+    }).then((value) => Navigator.pushReplacement(context, MaterialPageRoute(
+          builder: (context) {
+            return DashBoard();
+          },
+        )));
     print("...................signup sucsess");
   }
 
@@ -53,8 +88,6 @@ class _UserSignupState extends State<UserSignup> {
   final email = TextEditingController();
   final password = TextEditingController();
   final confirmpass = TextEditingController();
-
-  TextEditingController _date = TextEditingController();
 
   bool passToggle = true;
   bool _passwordValid = true;
@@ -161,8 +194,9 @@ class _UserSignupState extends State<UserSignup> {
                               const EdgeInsets.only(left: 30, right: 30, top: 5)
                                   .r,
                           child: TextFormField(
+                            keyboardType: TextInputType.emailAddress,
                             controller: email,
-                            obscureText: true,
+                            // obscureText: true,
                             decoration: InputDecoration(
                                 fillColor: Colors.white,
                                 filled: true,
@@ -317,9 +351,10 @@ class _UserSignupState extends State<UserSignup> {
                         Align(
                           alignment: Alignment.center,
                           child: InkWell(
-                            onTap: () {
+                            onTap: () async {
                               if (_formfield.currentState!.validate()) {
-                                register();
+                                setData();
+                                await register();
                                 print("Faild");
                               }
                             },

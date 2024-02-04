@@ -1,11 +1,14 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../forgott password/ForgottPassword.dart';
 import 'UserSighnup(1).dart';
+import 'bottom navigaton Dashbord.dart';
 
 class UserLogin1 extends StatefulWidget {
   const UserLogin1({super.key});
@@ -15,15 +18,51 @@ class UserLogin1 extends StatefulWidget {
 }
 
 class _UserLogin1State extends State<UserLogin1> {
+  var id;
+  var name;
+  var email;
+  var phone;
+  var path;
+
+  void loginuser() async {
+    final user = await FirebaseFirestore.instance
+        .collection('UserSignup')
+        .where('Mobile', isEqualTo: phonenumber.text)
+        .where('Password', isEqualTo: password.text)
+        .get();
+    print("inside");
+    if (user.docs.isNotEmpty) {
+      id = user.docs[0].id;
+      name = user.docs[0]['Email'];
+      email = user.docs[0]['Name'];
+      phone = user.docs[0]['Mobile'];
+      path = user.docs[0]['Profilepath'];
+      SharedPreferences data = await SharedPreferences.getInstance();
+      data.setString('id', id);
+      data.setString('name', name);
+      data.setString('email', email);
+      data.setString('phone', phone);
+      data.setString('paath', path);
+
+      print("logined");
+
+      Navigator.push(context, MaterialPageRoute(
+        builder: (context) {
+          return DashBoard();
+        },
+      ));
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+          content: Text(
+            "username and password error",
+            style: TextStyle(color: Colors.red),
+          )));
+    }
+  }
   final _formfield = GlobalKey<FormState>();
 
-  final name = TextEditingController();
-  final email = TextEditingController();
   final password = TextEditingController();
-  final confirmpass = TextEditingController();
   final phonenumber = TextEditingController();
-
-  TextEditingController _date = TextEditingController();
 
   bool passToggle = true;
   bool _passwordValid = true;
@@ -201,7 +240,8 @@ class _UserLogin1State extends State<UserLogin1> {
                           child: InkWell(
                             onTap: () {
                               if (_formfield.currentState!.validate()) {
-                                print("Faild");
+                                print("Touched");
+                                loginuser();
                               }
                             },
                             child: Container(
@@ -260,4 +300,6 @@ class _UserLogin1State extends State<UserLogin1> {
           ],
         ));
   }
+
+
 }
