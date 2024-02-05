@@ -33,8 +33,8 @@ class _UserLogin1State extends State<UserLogin1> {
     print("inside");
     if (user.docs.isNotEmpty) {
       // id = user.docs[0].id;
-      name = user.docs[0]['Email'];
-      email = user.docs[0]['Name'];
+      name = user.docs[0]['Name'];
+      email = user.docs[0]['Email'];
       phone = user.docs[0]['Mobile'];
       // path = user.docs[0]['Profilepath'];
       SharedPreferences data = await SharedPreferences.getInstance();
