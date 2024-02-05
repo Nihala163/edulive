@@ -1,77 +1,44 @@
+
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
 
-class UserPage extends StatefulWidget {
-  @override
-  _UserPageState createState() => _UserPageState();
-}
-
-class _UserPageState extends State<UserPage> {
-  final FirebaseMessaging _firebaseMessaging = FirebaseMessaging.instance;
-
-  @override
-  void initState() {
-    super.initState();
-
-    _firebaseMessaging.requestPermission();
-
-    FirebaseMessaging.onMessage.listen((RemoteMessage message) {
-      print("onMessage: $message");
-
-      String title = message.notification?.title ??
-          message.data['title'] ??
-          'Default Title';
-      String body =
-          message.notification?.body ?? message.data['body'] ?? 'Default Body';
-
-      _showNotification(title, body);
-    });
-
-    FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
-      print("onResume: $message");
-      // Handle when the app is resumed from the background
-    });
-
-    FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
-
-    _firebaseMessaging.subscribeToTopic('user_topic');
-  }
-
-  static Future<void> _firebaseMessagingBackgroundHandler(
-      RemoteMessage message) async {
-    print("Handling a background message: ${message.messageId}");
-  }
-
-  void _showNotification(String title, String body) {
-    showDialog(
-      context: context,
-      builder: (context) => AlertDialog(
-        title: Text(title ?? 'Notification'),
-        content: Text(body ?? ''),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context),
-            child: Text('OK'),
-          ),
-        ],
-      ),
-    );
-  }
-
+class ViewScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
-            icon: Icon(Icons.arrow_back_ios)),
-        centerTitle: true,
-        title: Text('User Page'),
+        title: Text('Notification'),
       ),
-      body: Center(
-        child: Text('This is the user page.'),
+      body: StreamBuilder(
+        stream: FirebaseFirestore.instance
+            .collection('messages')
+            .orderBy('timestamp', descending: true)
+            .snapshots(),
+        builder: (context, snapshot) {
+          if (!snapshot.hasData) {
+            return Center(
+              child: CircularProgressIndicator(),
+            );
+          }
+
+          var messages = snapshot.data!.docs;
+
+          return ListView.builder(
+            itemCount: messages.length,
+            itemBuilder: (context, index) {
+              var message = messages[index].data() as Map<String, dynamic>;
+
+              return Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: ListTile(tileColor: Colors.grey,
+                  title: Text(message['title']),
+                  subtitle: Text(message['body']),
+                  // You can add more information or customize the ListTile as needed
+                ),
+              );
+            },
+          );
+        },
       ),
     );
   }
