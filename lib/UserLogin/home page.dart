@@ -2,6 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../Admin/Video list.dart';
 import '../Quiz/quizViewuser.dart';
 import '../Settings/Settings.dart';
@@ -15,6 +16,25 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  var Name1;
+  var Email;
+
+  void initState() {
+    getData();
+  }
+
+  Future<void> getData() async {
+    SharedPreferences spref = await SharedPreferences.getInstance();
+    setState(() {
+      Name1 = spref.getString('name');
+      Email = spref.getString("email");
+
+      spref.setString('name', Name1);
+      spref.setString("email", Email);
+    });
+    print("Updated");
+  }
+
   final List<String> carouselItems = [
     'https://strapi.dhiwise.com/uploads/618fa90c201104b94458e1fb_647ecd43c5092e1c431f22fd_Flutter_App_Development_A_Step_by_Step_Tutorial_With_Dhi_Wise_E2_80_99s_Flutter_Builder_OG_Image_62b760b8fe.jpg',
     'https://www.talentica.com/wp-content/uploads/2021/04/Firebase-blog-feature-image-1.jpg',
@@ -42,8 +62,8 @@ class _HomePageState extends State<HomePage> {
         child: ListView(children: [
           UserAccountsDrawerHeader(
             decoration: BoxDecoration(color: Colors.indigo.shade900),
-            accountName: Text("Name"),
-            accountEmail: Text("Email"),
+            accountName: Text(Name1),
+            accountEmail: Text(Email),
             currentAccountPicture: InkWell(
                 onTap: () {},
                 child: CircleAvatar(
